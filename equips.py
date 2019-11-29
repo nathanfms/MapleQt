@@ -1,0 +1,178 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'equips.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.1
+#
+# WARNING! All changes made in this file will be lost!
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+from itemIcon import itemIcon
+
+
+class equipController(QtWidgets.QWidget):
+    def __init__(self, parent=None, onClick=None):
+        super().__init__(parent)
+        self.onClick = onClick
+        self.setupUi()
+
+    def setupUi(self):
+        self.resize(279, 258)
+        self.line = QtWidgets.QFrame(self)
+        self.line.setGeometry(QtCore.QRect(50, 0, 21, 261))
+        self.line.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+        self.ring1 = itemIcon(self)
+        self.ring1.setGeometry(QtCore.QRect(70, 10, 37, 37))
+        self.ring1.setObjectName("ring1")
+        self.ring2 = itemIcon(self)
+        self.ring2.setGeometry(QtCore.QRect(70, 50, 37, 37))
+        self.ring2.setObjectName("ring2")
+        self.ring4 = itemIcon(self)
+        self.ring4.setGeometry(QtCore.QRect(70, 130, 37, 37))
+        self.ring4.setObjectName("ring4")
+        
+        self.ring3 = itemIcon(self)
+        self.ring3.setGeometry(QtCore.QRect(70, 90, 37, 37))
+        self.ring3.setObjectName("ring3")
+        self.pocket = itemIcon(self)
+        self.pocket.setGeometry(QtCore.QRect(70, 170, 37, 37))
+        self.pocket.setObjectName("pocket")
+        self.book = itemIcon(self)
+        self.book.setGeometry(QtCore.QRect(70, 210, 37, 37))
+        self.book.setObjectName("book")
+        self.pend1 = itemIcon(self)
+        self.pend1.setGeometry(QtCore.QRect(110, 90, 37, 37))
+        self.pend1.setObjectName("pend1")
+        self.pend2 = itemIcon(self)
+        self.pend2.setGeometry(QtCore.QRect(110, 50, 37, 37))
+        self.pend2.setObjectName("pend2")
+        self.belt = itemIcon(self)
+        self.belt.setGeometry(QtCore.QRect(110, 170, 37, 37))
+        self.belt.setObjectName("belt")
+        self.wep = itemIcon(self)
+        self.wep.setGeometry(QtCore.QRect(110, 130, 37, 37))
+        self.wep.setObjectName("wep")
+        self.eye = itemIcon(self)
+        self.eye.setGeometry(QtCore.QRect(150, 90, 37, 37))
+        self.eye.setObjectName("eye")
+        self.face = itemIcon(self)
+        self.face.setGeometry(QtCore.QRect(150, 50, 37, 37))
+        self.face.setObjectName("face")
+        self.bot = itemIcon(self)
+        self.bot.setGeometry(QtCore.QRect(150, 170, 37, 37))
+        self.bot.setObjectName("bot")
+        self.top = itemIcon(self)
+        self.top.setGeometry(QtCore.QRect(150, 130, 37, 37))
+        self.top.setObjectName("top")
+        self.hat = itemIcon(self)
+        self.hat.setGeometry(QtCore.QRect(150, 10, 37, 37))
+        self.hat.setObjectName("hat")
+        self.shoe = itemIcon(self)
+        self.shoe.setGeometry(QtCore.QRect(150, 210, 37, 37))
+        self.shoe.setObjectName("shoe")
+        self.droid = itemIcon(self)
+        self.droid.setGeometry(QtCore.QRect(190, 210, 37, 37))
+        self.droid.setObjectName("droid")
+        self.heart = itemIcon(self)
+        self.heart.setGeometry(QtCore.QRect(230, 210, 37, 37))
+        self.heart.setObjectName("heart")
+        self.cape = itemIcon(self)
+        self.cape.setGeometry(QtCore.QRect(230, 170, 37, 37))
+        self.cape.setObjectName("cape")
+        self.glove = itemIcon(self)
+        self.glove.setGeometry(QtCore.QRect(190, 170, 37, 37))
+        self.glove.setObjectName("glove")
+        self.second = itemIcon(self)
+        self.second.setGeometry(QtCore.QRect(230, 130, 37, 37))
+        self.second.setObjectName("second")
+        self.shoulder = itemIcon(self)
+        self.shoulder.setGeometry(QtCore.QRect(190, 130, 37, 37))
+        self.shoulder.setObjectName("shoulder")
+        self.medal = itemIcon(self)
+        self.medal.setGeometry(QtCore.QRect(230, 90, 37, 37))
+        self.medal.setObjectName("medal")
+        self.earring = itemIcon(self)
+        self.earring.setGeometry(QtCore.QRect(190, 90, 37, 37))
+        self.earring.setObjectName("earring")
+        self.badge = itemIcon(self)
+        self.badge.setGeometry(QtCore.QRect(230, 50, 37, 37))
+        self.badge.setObjectName("badge")
+        self.emblem = itemIcon(self)
+        self.emblem.setGeometry(QtCore.QRect(230, 10, 37, 37))
+        self.emblem.setObjectName("emblem")
+        self.totem2 = itemIcon(self)
+        self.totem2.setGeometry(QtCore.QRect(10, 50, 37, 37))
+        self.totem2.setObjectName("totem2")
+        self.totem3 = itemIcon(self)
+        self.totem3.setGeometry(QtCore.QRect(10, 90, 37, 37))
+        self.totem3.setObjectName("totem3")
+        self.totem1 = itemIcon(self)
+        self.totem1.setGeometry(QtCore.QRect(10, 10, 37, 37))
+        self.totem1.setObjectName("totem1")
+        self.pet1 = itemIcon(self)
+        self.pet1.setGeometry(QtCore.QRect(10, 130, 37, 37))
+        self.pet1.setObjectName("pet1")
+        self.pet2 = itemIcon(self)
+        self.pet2.setGeometry(QtCore.QRect(10, 170, 37, 37))
+        self.pet2.setObjectName("pet2")
+        self.pet3 = itemIcon(self)
+        self.pet3.setGeometry(QtCore.QRect(10, 210, 37, 37))
+        self.pet3.setObjectName("pet3")
+
+        self.retranslateUi()
+        # QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def updateEquip(self, eqp=None, eqpType=None):
+        if(eqp == None):
+            return
+        eqpSlot = self.findChild(itemIcon, eqpType)
+        eqpSlot.dummyPic()
+        eqpSlot.setEquip(eqp)
+
+    def clicked(self):
+        pass
+
+    def childClicked(self, name):
+        child = self.findChild(itemIcon, name)
+        if(child.equip is None):
+            return
+        self.onClick(child)
+
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        # Form.setWindowTitle(_translate("Form", "Form"))
+        self.ring1.setText(_translate("Form", "RING"))
+        self.ring2.setText(_translate("Form", "RING"))
+        self.ring4.setText(_translate("Form", "RING"))
+        self.ring3.setText(_translate("Form", "RING"))
+        self.pocket.setText(_translate("Form", "PCKT"))
+        self.book.setText(_translate("Form", "BOOK"))
+        self.pend1.setText(_translate("Form", "PEND."))
+        self.pend2.setText(_translate("Form", "PEND."))
+        self.belt.setText(_translate("Form", "BELT"))
+        self.wep.setText(_translate("Form", "WEP."))
+        self.eye.setText(_translate("Form", "EYE"))
+        self.face.setText(_translate("Form", "FACE"))
+        self.bot.setText(_translate("Form", "BOT"))
+        self.top.setText(_translate("Form", "TOP"))
+        self.hat.setText(_translate("Form", "HAT"))
+        self.shoe.setText(_translate("Form", "SHOE"))
+        self.droid.setText(_translate("Form", "DROID"))
+        self.heart.setText(_translate("Form", "HEART"))
+        self.cape.setText(_translate("Form", "CAPE"))
+        self.glove.setText(_translate("Form", "GLOVE"))
+        self.second.setText(_translate("Form", "2ND"))
+        self.shoulder.setText(_translate("Form", "SHLDR"))
+        self.medal.setText(_translate("Form", "MEDAL"))
+        self.earring.setText(_translate("Form", "EAR"))
+        self.badge.setText(_translate("Form", "BADGE"))
+        self.emblem.setText(_translate("Form", "EMBL."))
+        self.totem2.setText(_translate("Form", "TOTEM"))
+        self.totem3.setText(_translate("Form", "TOTEM"))
+        self.totem1.setText(_translate("Form", "TOTEM"))
+        self.pet1.setText(_translate("Form", "PET"))
+        self.pet2.setText(_translate("Form", "PET"))
+        self.pet3.setText(_translate("Form", "PET"))

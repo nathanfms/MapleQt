@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>139</width>
+    <height>246</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="strLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>81</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>STR</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="titleLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>0</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>HYPER STATS</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="strSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>20</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="dexSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>40</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dexLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>40</y>
+     <width>81</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>DEX</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="intLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>81</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>INT</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="intSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>60</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="mpSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>120</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="mpLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>120</y>
+     <width>81</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>MP</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="hpLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>100</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>HP</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="lukSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>80</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="hpSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>100</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lukLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>80</y>
+     <width>81</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>LUK</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dfLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>140</y>
+     <width>81</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>DF/MANA</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="critdmgSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>180</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="dfSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>140</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="critdmgLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>180</y>
+     <width>81</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>CRIT DMG</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="critrateLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>160</y>
+     <width>81</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>CRIT RATE</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="critrateSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>160</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="atkSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>220</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="atkLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>220</y>
+     <width>81</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>M/ATK</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ignoreLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>200</y>
+     <width>81</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter;
+background-color: rgb(79, 238, 238); font-size: 12px;</string>
+   </property>
+   <property name="text">
+    <string>IGNORE</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="ignoreSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>200</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
