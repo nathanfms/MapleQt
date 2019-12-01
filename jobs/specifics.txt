@@ -1,0 +1,23 @@
+
+Paladin
+	Advanced charge adds attack, I think one per skill level. (lvl 12 = +12, explains description)
+
+ALL:		No 2nd job mastery	
+		Stackable hyper skills
+		blanket add decent skills
+		blanket add MW to all classes (include CO option)
+		HP per level skills.. ex Warrior Mastery (job 1 warrior)
+
+
+skill =	{
+		name: 
+		passive:
+		stats:
+		mod:	[
+			{
+				type: weapon
+				value: weapontype
+			}
+		]
+
+	}

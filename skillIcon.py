@@ -8,19 +8,38 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import skillInfo
 
+class skillIcon(QtWidgets.QWidget):
+    
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.parent = parent
+        self.json = None
+        self.toolTip = None
+        self.setupUi()
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(32, 32)
-        self.label = QtWidgets.QLabel(Form)
+    def setupUi(self):
+        self.setGeometry(0, 0, 32, 32)
+        self.label = QtWidgets.QLabel(self)
         self.label.setGeometry(QtCore.QRect(0, 0, 32, 32))
-        self.label.setStyleSheet("qproperty-alignment: AlignCenter;")
-        self.label.setObjectName("label")
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        # self.retranslateUi(Form)
+        # QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def setSkill(self, skill):
+        self.json = skill
+        self.toolTip = skillInfo(json=self.json, parent=self)
+
+    def enterEvent(self, event):
+        myCoords = self.mapToGlobal(QtCore.QPoint(self.label.x(), self.label.y()))
+        if(self.json is not None):
+            self.toolTip.move(myCoords.x() + 40, myCoords.y() - (self.toolTip.height()/3))
+            self.toolTip.show()
+
+    def leaveEvent(self, event):
+        if(self.json is not None):
+            self.toolTip.hide()
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

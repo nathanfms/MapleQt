@@ -80,7 +80,7 @@ def getStatSpecific(json, statArray):
 
 class itemInfo(QtWidgets.QWidget):
     def __init__(self, json=None, parent=None):
-        super().__init__()
+        super().__init__(parent)
         self.json = json
         self.jsonVals = countAttributes(self.json)
         self.setupUi()

@@ -1,0 +1,48 @@
+[
+    {
+        "name": "Sharp Eyes",
+        "img": "common/se.png",
+        "passive": false,
+        "stats": [
+            {
+                "CRITRATEp": 0.1,
+                "CRITDMGp": 0.08
+            }
+        ]
+    },
+    {
+        "name": "Advanced Blessing",
+        "img": "common/ab.png",
+        "passive": false,
+        "stats": [
+            {
+                "ATK": 20,
+                "MATK": 20,
+                "DEF": 425,
+                "HP": 475,
+                "MP": 475
+            }
+        ]
+    },
+    {
+        "name": "Hyper Body",
+        "img": "common/hb.png",
+        "passive": false,
+        "stats": [
+            {
+                "HPp": 0.4,
+                "MPp": 0.4
+            }
+        ]
+    },
+    {
+        "name": "Combat Orders",
+        "img": "common/co.png",
+        "passive": false,
+        "stats": [
+            {
+                "ALLSKILLS": 1
+            }
+        ]
+    }
+]

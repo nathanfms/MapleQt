@@ -1,0 +1,176 @@
+[
+    {
+        "name": "Iron Body",
+        "img": "warrior/iron-body.png",
+        "passive": true,
+        "stats": [
+            {
+                "HPp": 0.2,
+                "DEF": 200
+            }
+        ]
+    },
+    {
+        "name": "Warrior Mastery",
+        "img": "warrior/warrior-mastery.png",
+        "passive": true,
+        "stats": [
+            {
+                "SPEED": 10,
+                "JUMP": 10,
+                "HPlvl": 20
+            }
+        ]
+    },
+    {
+        "name": "Elemental Charge",
+        "img": "paladin/ele-charge.png",
+        "passive": false,
+        "stats": [
+            {
+                "ATK": 40
+            }
+        ]
+    },
+    {
+        "name": "Physical Training",
+        "img": "warrior/phys-train.png",
+        "passive": true,
+        "stats": [
+            {
+                "STR": 30,
+                "DEX": 30
+            }
+        ]
+    },
+    {
+        "name": "Parashock Guard",
+        "img": "paladin/para-guard.png",
+        "passive": false,
+        "stats": [
+            {
+                "ATK": 20
+            }
+        ]
+    },
+    {
+        "name": "Combat Orders",
+        "img": "common/co.png",
+        "passive": false,
+        "stats": [
+            {
+                "ALLSKILLS": 2
+            }
+        ]
+    },
+    {
+        "name": "Shield Mastery",
+        "img": "paladin/shield-mastery.png",
+        "passive": true,
+        "stats": [
+            {
+                "ATK" : 10,
+                "DEFp": 2.5
+            }
+        ]
+    },
+    {
+        "name": "Divine Shield",
+        "img": "paladin/divine-shield.png",
+        "passive": false,
+        "stats": [
+            {
+                "ATK": 20
+            }
+        ]
+    },
+    {
+        "name": "Elemental Force",
+        "img": "paladin/ele-force.png",
+        "passive": false,
+        "stats": [
+            {
+                "FINALDMGp": 0.2
+            },
+            {
+                "FINALDMGp": 0.2
+            },
+            {
+                "FINALDMGp": 0.21
+            }
+        ]
+    },
+    {
+        "name": "High Paladin",
+        "img": "paladin/high-pally.png",
+        "passive": true,
+        "stats": [
+            {
+                "MASTERY": 0.7,
+                "CRITRATEp": 0.4,
+                "CRITDMGp": 0.15,
+                "IGNORE": 0.3,
+                "FINALDMGp": 0.4
+            },
+            {
+                "MASTERY": 0.71,
+                "CRITRATEp": 0.41,
+                "CRITDMGp": 0.15,
+                "IGNORE": 0.31,
+                "FINALDMGp": 0.41
+            },
+            {
+                "MASTERY": 0.71,
+                "CRITRATEp": 0.42,
+                "CRITDMGp": 0.15,
+                "IGNORE": 0.32,
+                "FINALDMGp": 0.42
+            }
+        ],
+        "mod": [
+            {
+                "type": "weapon",
+                "value": "One-Handed Sword",
+                "CRITDMGp": 0.06,
+                "MASTERY": 0.03
+            },
+            {
+                "type": "weapon",
+                "value": "Two-Handed Sword",
+                "CRITDMGp": 0.05
+            },
+            {
+                "type": "weapon",
+                "value": "One-Handed Blunt",
+                "CRITDMGp": 0.05,
+                "IGNORE": 0.1,
+                "MASTERY": 0.03
+            },
+            {
+                "type": "weapon",
+                "value": "Two-Handed Blunt",
+                "CRITDMGp": 0.05,
+                "IGNORE": 0.1
+            }
+        ]
+    },
+    {
+        "name": "Advanced Charge",
+        "img": "paladin/adv-charge.png",
+        "passive": true,
+        "stats": [
+            {
+                "DMGp": 0.25,
+                "ATK": 10
+            },
+            {
+                "DMGp": 0.25,
+                "ATK": 11
+            },
+            {
+                "DMGp": 0.25,
+                "ATK": 12
+            }
+        ]
+    }
+]

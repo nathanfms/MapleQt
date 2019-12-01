@@ -4,7 +4,7 @@ from os import path
 from DatabaseController import Database
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QLabel, QGridLayout, QWidget
-from mainController import mainController
+from mainWindow import mainWindow
 from createMapler import createMaplerWindow
 
 class MainWindow(QMainWindow):
@@ -18,7 +18,7 @@ class MainWindow(QMainWindow):
         #character.py: parseJson
         self._currentChar = None
         self.setWindowTitle("MapleQt")
-        self.center = mainController(parent=self)
+        self.center = mainWindow(parent=self)
         self.setCentralWidget(self.center)
         self._db = Database()
         self.createMapler = None

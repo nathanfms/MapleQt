@@ -3,7 +3,6 @@ venv/
 test-images/
 qt-creator-files/
 __pycache__/
-jobs/
 WzExtracting/
 DatabaseController.py
 maplerId.json
