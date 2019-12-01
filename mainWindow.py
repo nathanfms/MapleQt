@@ -14,7 +14,7 @@ from stats import statsController
 from itemIcon import itemIcon
 from symbols import Symbols
 from Mapler import Mapler
-import skillWindow
+from skillWindow import skillController
 
 class mainWindow(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -56,7 +56,7 @@ class mainWindow(QtWidgets.QWidget):
         self.skillTab = QtWidgets.QWidget()
         self.skillTab.setObjectName("skillTab")
         # self.skills = QtWidgets.QWidget(self.skillTab)
-        self.skills = skillWindow(self.skillTab)
+        self.skills = skillController(self.skillTab)
         self.skills.setGeometry(QtCore.QRect(10, 10, 600, 335))
         self.skills.setObjectName("skills")
         self.tabWidget.addTab(self.skillTab, "Skills")

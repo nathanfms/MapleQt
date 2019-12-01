@@ -6,9 +6,9 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
+import os
 from PyQt5 import QtCore, QtGui, QtWidgets
-import skillInfo
+from skillInfo import skillInfo
 
 class skillIcon(QtWidgets.QWidget):
     
@@ -20,7 +20,7 @@ class skillIcon(QtWidgets.QWidget):
         self.setupUi()
 
     def setupUi(self):
-        self.setGeometry(0, 0, 32, 32)
+        # self.setGeometry(0, 0, 32, 32)
         self.label = QtWidgets.QLabel(self)
         self.label.setGeometry(QtCore.QRect(0, 0, 32, 32))
 
@@ -29,6 +29,7 @@ class skillIcon(QtWidgets.QWidget):
 
     def setSkill(self, skill):
         self.json = skill
+        self.label.setPixmap(QtGui.QPixmap(os.path.join("assets/skills", self.json.get("img"))))
         self.toolTip = skillInfo(json=self.json, parent=self)
 
     def enterEvent(self, event):

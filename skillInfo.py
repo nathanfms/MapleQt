@@ -46,7 +46,7 @@ class skillInfo(QtWidgets.QWidget):
         self.attributes.setItemAlignment(QtCore.Qt.AlignAbsolute|QtCore.Qt.AlignHCenter|QtCore.Qt.AlignJustify|QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing)
         self.attributes.setObjectName("attributes")
 
-        self.totalList = QtWidgets.QListWidget(Form)
+        self.totalList = QtWidgets.QListWidget(self)
         self.totalList.setGeometry(QtCore.QRect(180, 40, 71, 301))
         self.totalList.setStyleSheet("color: rgb(0, 231, 231); font-size: 14px;")
         self.totalList.setObjectName("totalList")
@@ -62,7 +62,7 @@ class skillInfo(QtWidgets.QWidget):
             item.setText(key)
             self.attributes.addItem(item)
             val = QtWidgets.QListWidgetItem()
-            val.setText(self.json.get("stats")[0].get(key))
+            val.setText(str(self.json.get("stats")[0].get(key)))
             self.totalList.addItem(val)
 
         # item = QtWidgets.QListWidgetItem()
