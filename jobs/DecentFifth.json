@@ -5,153 +5,93 @@
         "passive": false,
         "stats": [
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 1
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 1
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 1
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 1
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 1
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 2
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 2
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 2
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 2
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 2
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 3
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 3
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 3
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 3
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 3
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 4
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 4
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 4
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 4
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 4
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 5
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 5
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 5
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 5
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 5
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 6
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 6
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 6
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 6
             },
             {
-                "CRITRATEp": 0.1,
-                "CRITDMGp": 0.08,
                 "ALL": 6
             }
         ]
@@ -162,153 +102,93 @@
         "passive": false,
         "stats": [
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 1
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 1
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 1
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 1
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 1
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 2
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 2
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 2
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 2
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 2
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 3
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 3
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 3
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 3
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 3
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 4
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 4
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 4
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 4
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 4
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 5
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 5
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 5
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 5
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 5
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 6
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 6
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 6
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 6
             },
             {
-                "HPp": 0.4,
-                "MPp": 0.4,
                 "ALL": 6
             }
         ]
@@ -316,7 +196,7 @@
     {
         "name": "Mystic Door",
         "img": "common/door.png",
-        "passive": false,
+        "passive": true,
         "stats": [
             {
                 "ALL": 1
@@ -413,7 +293,7 @@
     {
         "name": "Blink",
         "img": "common/blink.png",
-        "passive": false,
+        "passive": true,
         "stats": [
             {
                 "ALL": 1
@@ -510,7 +390,7 @@
     {
         "name": "Rope Lift",
         "img": "common/ropelift.png",
-        "passive": false,
+        "passive": true,
         "stats": [
             {
                 "ALL": 1
@@ -607,7 +487,7 @@
     {
         "name": "Speed Infusion",
         "img": "common/si.png",
-        "passive": false,
+        "passive": true,
         "stats": [
             {
                 "ALL": 1

@@ -32,6 +32,9 @@ class skillIcon(QtWidgets.QWidget):
         self.label.setPixmap(QtGui.QPixmap(os.path.join("assets/skills", self.json.get("img"))))
         self.toolTip = skillInfo(json=self.json, parent=self)
 
+    def updateLevel(self, level):
+        self.toolTip.setLevel(level)
+
     def enterEvent(self, event):
         myCoords = self.mapToGlobal(QtCore.QPoint(self.label.x(), self.label.y()))
         if(self.json is not None):

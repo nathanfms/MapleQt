@@ -8,6 +8,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import json
+import os
 from inventory import inventoryController
 from equips import equipController
 from stats import statsController
@@ -81,12 +83,13 @@ class mainWindow(QtWidgets.QWidget):
     def mapler(self):
         return self._mapler
 
-    def setupMapler(self, json):
-        self._mapler = Mapler(json=json)
+    def setupMapler(self, passedJson):
+        self._mapler = Mapler(json=passedJson)
         self.statsCntrl.name = self.mapler.name
         self.statsCntrl.job = self.mapler.job
         self.statsCntrl.level = self.mapler.level
 
+        #Equips
         for key in self.mapler.equips:
             eqp = self.mapler.equips.get(key)
             self.equipCntrl.updateEquip(eqp=eqp, eqpType=key)
@@ -99,12 +102,22 @@ class mainWindow(QtWidgets.QWidget):
             eqp = val
             self.invCntrl.addEquip(row, col, eqp)
 
+        #Skills
+        jobName = self.mapler.job
+        jobName.replace(" ", "")
+        jsonFile = jobName + ".json"
+        openSkills = open(os.path.join("jobs", jsonFile))
+        jsonSkills = json.load(openSkills)
+        self.skills.loadJobSkills(jsonSkills)
+
         self.statsCntrl.update(json=self.mapler.getTotal())
         # self.update()
 
     def updateSymbols(self):
         self.mapler.symbols = self.symbCntrl.getLevels()
         self.statsCntrl.update(json=self.mapler.getTotal())
+
+
 
     #Equip in inventory -> Equipped
     def swapEquip(self, item):
