@@ -9,10 +9,18 @@
 import os
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+def format(text):
+    if(text.endswith("p")):
+        return text[0:-1]
+    elif(text.endswith("lvl")):
+        return text[0:-3] + " / lvl"
+    return text
+
 class skillInfo(QtWidgets.QWidget):
     def __init__(self, json=None, parent=None):
         super().__init__(parent)
         self.json = json
+        self.currentStats = {}
         self.setupUi()
 
     def setupUi(self):
@@ -66,11 +74,17 @@ class skillInfo(QtWidgets.QWidget):
 
         self.setLevel(0)
 
-    def setLevel(self, level):
+    def setDecentLevel(self, level):
         if(level != 0):
             level = level - 1
+        self.setLevel(level)
+
+    def setLevel(self, level):
         self.attributes.clear()
         self.totalList.clear()
+        self.currentStats.clear()
+        if(level >= len(self.json.get("stats"))):
+            level = 0
         for key in self.json.get("stats")[level]:
             if(key != "passive"):
                 amount = self.json.get("stats")[level].get(key)
@@ -82,9 +96,10 @@ class skillInfo(QtWidgets.QWidget):
                 self.addStat(key, val)
 
     def addStat(self, key, val):
+        self.currentStats.update({key : val})
         item = QtWidgets.QListWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignRight)
-        item.setText(key)
+        item.setText(format(key))
         item.setSizeHint(QtCore.QSize(85, 21))
         self.attributes.addItem(item)
         itemVal = QtWidgets.QListWidgetItem()

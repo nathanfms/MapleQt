@@ -10,14 +10,21 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from skillIcon import skillIcon
 import json
+from Mapler import addDicts
 
+#I hate Combat Orders
 
 class skillController(QtWidgets.QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, valuesChanged=None):
         super().__init__(parent)
         self.passiveSkills = []
         self.activeSkills = []
         self.activeBoxes = []
+        self.allSkill = 0
+        self.co = False #Combat Orders
+        self.dco = False #Decent Combat Orders
+        self.total = {}
+        self.notifyParent = valuesChanged
         self.setupUi()
 
     def setupUi(self):
@@ -74,6 +81,7 @@ class skillController(QtWidgets.QWidget):
         self.allActivesBox.setGeometry(QtCore.QRect(60, 58, 70, 17))
         self.allActivesBox.setObjectName("allActivesBox")
         self.allActivesBox.setText("Enable All")
+        self.allActivesBox.stateChanged.connect(self.toggleActives)
 
         #Active Skill 1
         # self.actSkill1 = skillIcon(self)
@@ -94,6 +102,7 @@ class skillController(QtWidgets.QWidget):
         self.decSeBox = QtWidgets.QCheckBox(self)
         self.decSeBox.setGeometry(QtCore.QRect(28, 186, 16, 17))
         self.decSeBox.setObjectName("decSeBox")
+        self.decSeBox.stateChanged.connect(self.updateTotal)
         
         #Advanced Blessing (Potential)
         self.decAbLabel = skillIcon(self)
@@ -103,6 +112,7 @@ class skillController(QtWidgets.QWidget):
         self.decAbBox = QtWidgets.QCheckBox(self)
         self.decAbBox.setGeometry(QtCore.QRect(68, 186, 16, 17))
         self.decAbBox.setObjectName("decAbBox")
+        self.decAbBox.stateChanged.connect(self.updateTotal)
 
         #Hyper Body (Potential)
         self.decHbLabel = skillIcon(self)
@@ -112,6 +122,7 @@ class skillController(QtWidgets.QWidget):
         self.decHbBox = QtWidgets.QCheckBox(self)
         self.decHbBox.setGeometry(QtCore.QRect(108, 186, 16, 17))
         self.decHbBox.setObjectName("decHbBox")
+        self.decHbBox.stateChanged.connect(self.updateTotal)
 
         #Combat Orders (Potential)
         self.decCoLabel = skillIcon(self)
@@ -121,6 +132,7 @@ class skillController(QtWidgets.QWidget):
         self.decCoBox = QtWidgets.QCheckBox(self)
         self.decCoBox.setGeometry(QtCore.QRect(148, 186, 16, 17))
         self.decCoBox.setObjectName("decCoBox")
+        self.decCoBox.stateChanged.connect(self.decentCombatOrders)
         
         #Sharp Eyes (Fifth)
         self.fifthSeLabel = skillIcon(self)
@@ -237,12 +249,74 @@ class skillController(QtWidgets.QWidget):
                 box = QtWidgets.QCheckBox(self)
                 x += 8
                 box.setGeometry(QtCore.QRect(x, 114, 16, 17))
+                if(skill.get("stats")[0].get("ALLSKILLS") is not None):
+                    box.stateChanged.connect(self.realCombatOrders)
+                box.stateChanged.connect(self.updateTotal)
                 self.activeBoxes.append(box)
+        self.updateTotal()
+
+    #This is awful and I hate everything about it.. thank you combat orders
+    def decentCombatOrders(self):
+        self.dco = not self.dco
+        self.applyCombatOrders()
+
+    def realCombatOrders(self):
+        self.co = not self.co
+        self.applyCombatOrders()
+
+    #Again, I really hate combat orders
+    def applyCombatOrders(self):
+        val = self.allSkill
+        if(self.co):
+            val += 2
+        elif(self.dco):
+            val += 1
+        if(val > 2):
+            val = 2
+        for skill in self.passiveSkills:
+            skill.updateLevel(val)
+        for skill in self.activeSkills:
+            skill.updateLevel(val)
+        self.updateTotal()
+
+    def updateTotal(self):
+        self.total.clear()
+        for skill in self.passiveSkills:
+            self.total = addDicts(self.total, skill.getStats())
+        for i in range(0, len(self.activeBoxes)):
+            if(self.activeBoxes[i].isChecked()):
+                self.total = addDicts(self.total, self.activeSkills[i].getStats())
+        if(self.decSeBox.isChecked()):
+            self.total = addDicts(self.total, self.decSeLabel.getStats())
+        if(self.decAbBox.isChecked()):
+            self.total = addDicts(self.total, self.decAbLabel.getStats())
+        if(self.decHbBox.isChecked()):
+            self.total = addDicts(self.total, self.decHbLabel.getStats())
+        # if(self.decCoBox.isChecked()):
+        #     self.total = addDicts(self.total, self.decCoLabel.getStats())
+        if(self.fifthSeSpin.value() > 0):
+            self.total = addDicts(self.total, self.fifthSeLabel.getStats())
+        if(self.fifthHbSpin.value() > 0):
+            self.total = addDicts(self.total, self.fifthHbLabel.getStats())
+        if(self.fifthDoorSpin.value() > 0):
+            self.total = addDicts(self.total, self.fifthDoorLabel.getStats())
+        if(self.fifthBlinkSpin.value() > 0):
+            self.total = addDicts(self.total, self.fifthBlinkLabel.getStats())
+        if(self.fifthRopeSpin.value() > 0):
+            self.total = addDicts(self.total, self.fifthRopeLabel.getStats())
+        if(self.fifthSiSpin.value() > 0):
+            self.total = addDicts(self.total, self.fifthSiLabel.getStats())
+        self.notifyParent()
+
+    def toggleActives(self):
+        for box in self.activeBoxes:
+            box.setChecked(self.allActivesBox.isChecked())
         
     def updateSkillToolTips(self):
-        self.fifthSeLabel.updateLevel(self.fifthSeSpin.value())
-        self.fifthHbLabel.updateLevel(self.fifthHbSpin.value())
-        self.fifthDoorLabel.updateLevel(self.fifthDoorSpin.value())
-        self.fifthBlinkLabel.updateLevel(self.fifthBlinkSpin.value())
-        self.fifthRopeLabel.updateLevel(self.fifthRopeSpin.value())
-        self.fifthSiLabel.updateLevel(self.fifthSiSpin.value())
+        self.fifthSeLabel.updateDecentLevel(self.fifthSeSpin.value())
+        self.fifthHbLabel.updateDecentLevel(self.fifthHbSpin.value())
+        self.fifthDoorLabel.updateDecentLevel(self.fifthDoorSpin.value())
+        self.fifthBlinkLabel.updateDecentLevel(self.fifthBlinkSpin.value())
+        self.fifthRopeLabel.updateDecentLevel(self.fifthRopeSpin.value())
+        self.fifthSiLabel.updateDecentLevel(self.fifthSiSpin.value())
+        self.updateTotal()

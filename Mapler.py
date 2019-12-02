@@ -19,6 +19,7 @@ class Mapler(Equip):
         self._level = self.json.get("level")
         self._equipIds = self.json.get("equips")
         self._equips = {}
+        self._skills = {}
         self._links = self.json.get("links")
         self._legion = self.json.get("legion")
         self._hypers = self.json.get("hypers")
@@ -64,7 +65,7 @@ class Mapler(Equip):
     Changing 1 item should not have to recalculate EVERYTHING!
     """
     def getTotal(self):
-        total = {}
+        total = {"ALL": 4, "CRITRATEp": 0.05, "SPEED": 100, "JUMP": 100} #Base stats
         if(type(self.statInfo.get('main')) is not list): #Xenon's will have to change their base AP manually
             total.update({self.statInfo.get('main') : 14 + int(self.level) * 5})
         eqpTotal = self.updateStatsByEqp()
@@ -72,7 +73,9 @@ class Mapler(Equip):
 
         # total = { key: total.get(key, 0) + eqpTotal.get(key, 0)
         #             for key in set(total) | set(eqpTotal) }
-        total = addDicts(eqpTotal, symTotal)
+        total = addDicts(total, eqpTotal)
+        total = addDicts(total, symTotal)
+        total = addDicts(total, self.skills)
         return total
         # self._baseStats.update(statInfo.get('main') = 14 * self.level * 5)
 
@@ -396,4 +399,12 @@ class Mapler(Equip):
     @property
     def statInfo(self):
         return self._statInfo
+
+    @property
+    def skills(self):
+        return self._skills
+
+    @skills.setter
+    def skills(self, value):
+        self._skills = value
 

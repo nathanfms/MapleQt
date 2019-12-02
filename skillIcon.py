@@ -27,10 +27,16 @@ class skillIcon(QtWidgets.QWidget):
         # self.retranslateUi(Form)
         # QtCore.QMetaObject.connectSlotsByName(Form)
 
+    def getStats(self):
+        return self.toolTip.currentStats
+
     def setSkill(self, skill):
         self.json = skill
         self.label.setPixmap(QtGui.QPixmap(os.path.join("assets/skills", self.json.get("img"))))
         self.toolTip = skillInfo(json=self.json, parent=self)
+
+    def updateDecentLevel(self, level):
+        self.toolTip.setDecentLevel(level)
 
     def updateLevel(self, level):
         self.toolTip.setLevel(level)

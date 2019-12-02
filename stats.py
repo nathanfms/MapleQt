@@ -246,6 +246,9 @@ class statsController(QtWidgets.QWidget):
         allStat = json.get('ALLp')
         if(allStat == None):
             allStat = 0
+        allFlat = json.get('ALL') #im lazy
+        if(allFlat == None):
+            allFlat = 0
 
         self.stre = json.get('STR')
         self.strep = json.get('STRp')
@@ -267,12 +270,17 @@ class statsController(QtWidgets.QWidget):
         self.defep = json.get('DEFp')
         self.speed = json.get('SPEED')
         self.jump = json.get('JUMP')
-        self.critRate = json.get('CRITRATE')
-        self.critDmg = json.get('CRITDMG')
-        self.finalDmg = json.get('FINALDMG')
+        self.critRate = json.get('CRITRATEp')
+        self.critDmg = json.get('CRITDMGp')
+        self.finalDmg = json.get('FINALDMGp')
         self.bossDmg = json.get('BOSSp')
-        self.dmg = json.get('DMG')
+        self.dmg = json.get('DMGp')
         self.ignore = json.get('IGNORE')
+
+        self.stre += allFlat
+        self.dex += allFlat
+        self.inte += allFlat
+        self.luk += allFlat
 
         self.strep += allStat
         self.dexp += allStat

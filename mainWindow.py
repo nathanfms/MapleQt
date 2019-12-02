@@ -58,7 +58,7 @@ class mainWindow(QtWidgets.QWidget):
         self.skillTab = QtWidgets.QWidget()
         self.skillTab.setObjectName("skillTab")
         # self.skills = QtWidgets.QWidget(self.skillTab)
-        self.skills = skillController(self.skillTab)
+        self.skills = skillController(self.skillTab, valuesChanged=self.updateSkills)
         self.skills.setGeometry(QtCore.QRect(10, 10, 600, 335))
         self.skills.setObjectName("skills")
         self.tabWidget.addTab(self.skillTab, "Skills")
@@ -117,7 +117,9 @@ class mainWindow(QtWidgets.QWidget):
         self.mapler.symbols = self.symbCntrl.getLevels()
         self.statsCntrl.update(json=self.mapler.getTotal())
 
-
+    def updateSkills(self):
+        self.mapler.skills = self.skills.total
+        self.statsCntrl.update(json=self.mapler.getTotal())
 
     #Equip in inventory -> Equipped
     def swapEquip(self, item):
