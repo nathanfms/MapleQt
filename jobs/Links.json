@@ -1,0 +1,364 @@
+[
+    {
+        "name": "Solus [Ark]",
+        "img": "links/.png",
+        "passive": false,
+        "stats": [
+            {
+                "DMGp": 0.06
+            },
+            {
+                "DMGp": 0.11
+            }
+        ]
+    },
+    {
+        "name": "Focus Spirit [Beast Tamer]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "BOSSp": 0.04,
+                "CRITRATEp": 0.04,
+                "HPp": 0.03,
+                "MPp": 0.03
+            },
+            {
+                "BOSSp": 0.07,
+                "CRITRATEp": 0.07,
+                "HPp": 0.04,
+                "MPp": 0.04
+            },
+            {
+                "BOSSp": 0.1,
+                "CRITRATEp": 0.1,
+                "HPp": 0.05,
+                "MPp": 0.05
+            }
+        ]
+    },
+    {
+        "name": "Pirate Blessing [Pirate]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "ALL": 20,
+                "HP": 350,
+                "MP": 350
+            },
+            {
+                "ALL": 30,
+                "HP": 525,
+                "MP": 525
+            },
+            {
+                "ALL": 40,
+                "HP": 700,
+                "MP": 700
+            },
+            {
+                "ALL": 50,
+                "HP": 875,
+                "MP": 875
+            },
+            {
+                "ALL": 60,
+                "HP": 1050,
+                "MP": 1050
+            },
+            {
+                "ALL": 70,
+                "HP": 1225,
+                "MP": 1225
+            }
+        ]
+    },
+    {
+        "name": "Adventurer's Curiosity [Bowman]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "CRITRATEp": 0.03
+            },
+            {
+                "CRITRATEp": 0.04
+            },
+            {
+                "CRITRATEp": 0.06
+            },
+            {
+                "CRITRATEp": 0.07
+            },
+            {
+                "CRITRATEp": 0.09
+            },
+            {
+                "CRITRATEp": 0.1
+            }
+        ]
+    },
+    {
+        "name": "Empirical Knowledge [Magician]",
+        "img": "links/.png",
+        "passive": false,
+        "stats": [
+            {
+                "DMGp": 0.01,
+                "IGNORE": 0.01
+            },
+            {
+                "DMGp": 0.01,
+                "IGNORE": 0.01
+            },
+            {
+                "DMGp": 0.02,
+                "IGNORE": 0.02
+            },
+            {
+                "DMGp": 0.02,
+                "IGNORE": 0.02
+            },
+            {
+                "DMGp": 0.03,
+                "IGNORE": 0.03
+            },
+            {
+                "DMGp": 0.03,
+                "IGNORE": 0.03
+            }
+        ]
+    },
+    {
+        "name": "Bravado [Ho Young]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "IGNORE": 0.05
+            },
+            {
+                "IGNORE": 0.1
+            }
+        ]
+    },
+    {
+        "name": "Wild Rage [Demon Avenger]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "DMGp": 0.05
+            },
+            {
+                "DMGp": 0.1
+            },
+            {
+                "DMGp": 0.15
+            }
+        ]
+    },
+    {
+        "name": "Fury Unleashed [Demon Slayer]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "BOSSp": 0.1
+            },
+            {
+                "BOSSp": 0.15
+            },
+            {
+                "BOSSp": 0.2
+            }
+        ]
+    },
+    {
+        "name": "Keen Edge [Hayato]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "ALL": 15,
+                "ATK": 10,
+                "MATK": 10
+            },
+            {
+                "ALL": 25,
+                "ATK": 15,
+                "MATK": 15
+            }
+        ]
+    },
+    {
+        "name": "Tide of Battle [Illium]",
+        "img": "links/.png",
+        "passive": false,
+        "stats": [
+            {
+                "DMGp": 0.06
+            },
+            {
+                "DMGp": 0.12
+            }
+        ]
+    },
+    {
+        "name": "Iron Will [Kaiser]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "HPp": 0.1
+            },
+            {
+                "HPp": 0.15
+            },
+            {
+                "HPp": 0.2
+            }
+        ]
+    },
+    {
+        "name": "Elementalism [Kanna]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "DMGp": 0.05
+            },
+            {
+                "DMGp": 0.1
+            }
+        ]
+    },
+    {
+        "name": "Judgement [Kinesis]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "CRITDMGp": 0.02
+            },
+            {
+                "CRITDMGp": 0.04
+            }
+        ]
+    },
+    {
+        "name": "Light Wash [Luminous]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "IGNORE": 0.1
+            },
+            {
+                "IGNORE": 0.15
+            },
+            {
+                "IGNORE": 0.2
+            }
+        ]
+    },
+    {
+        "name": "Phantom Instinct [Phantom]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "CRITRATEp": 0.1
+            },
+            {
+                "CRITRATEp": 0.15
+            },
+            {
+                "CRITRATEp": 0.2
+            }
+        ]
+    },
+    {
+        "name": "Hybrid Logic [Xenon]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "ALLp": 0.05
+            },
+            {
+                "ALLp": 0.1
+            }
+        ]
+    },
+    {
+        "name": "Rhinne's Blessing [Zero]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "IGNORE": 0.02
+            },
+            {
+                "IGNORE": 0.04
+            },
+            {
+                "IGNORE": 0.06
+            },
+            {
+                "IGNORE": 0.08
+            },
+            {
+                "IGNORE": 0.1
+            }
+        ]
+    },
+    {
+        "name": "Cygnus Blessing [Cygnus]",
+        "img": "links/.png",
+        "passive": true,
+        "stats": [
+            {
+                "ATK": 7,
+                "MATK": 7
+            },
+            {
+                "ATK": 9,
+                "MATK": 9
+            },
+            {
+                "ATK": 11,
+                "MATK": 11
+            },
+            {
+                "ATK": 13,
+                "MATK": 13
+            },
+            {
+                "ATK": 15,
+                "MATK": 15
+            },
+            {
+                "ATK": 17,
+                "MATK": 17
+            },
+            {
+                "ATK": 19,
+                "MATK": 19
+            },
+            {
+                "ATK": 21,
+                "MATK": 21
+            },
+            {
+                "ATK": 23,
+                "MATK": 23
+            },
+            {
+                "ATK": 25,
+                "MATK": 25
+            }
+        ]
+    }
+]
