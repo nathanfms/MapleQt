@@ -52,7 +52,7 @@ class mainWindow(QtWidgets.QWidget):
 
         self.hyperLinkTab = QtWidgets.QWidget()
         self.hyperLinkTab.setObjectName("hyperLinkTab")
-        self.tabWidget.addTab(self.hyperLinkTab, "Hyper + Links")
+        self.tabWidget.addTab(self.hyperLinkTab, "Hypers + Skills [1/2]")
 
         # self.tabWidget.addTab() what is this?
         self.skillTab = QtWidgets.QWidget()
@@ -61,7 +61,7 @@ class mainWindow(QtWidgets.QWidget):
         self.skills = skillController(self.skillTab, valuesChanged=self.updateSkills)
         self.skills.setGeometry(QtCore.QRect(10, 10, 600, 335))
         self.skills.setObjectName("skills")
-        self.tabWidget.addTab(self.skillTab, "Skills")
+        self.tabWidget.addTab(self.skillTab, "Skills [2/2]")
 
         self.legionTab = QtWidgets.QWidget()
         self.legionTab.setObjectName("legionTab")

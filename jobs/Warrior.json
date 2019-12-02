@@ -1,0 +1,358 @@
+[
+    {
+        "name": "Weapon Aura",
+        "img": "warrior/aura.png",
+        "passive": false,
+        "fifth": true,
+        "stats": [
+            {
+                "IGNORE": 0.1,
+                "FINALDMGp": 0.01
+            },
+            {
+                "IGNORE": 0.1,
+                "FINALDMGp": 0.01
+            },
+            {
+                "IGNORE": 0.1,
+                "FINALDMGp": 0.01
+            },
+            {
+                "IGNORE": 0.1,
+                "FINALDMGp": 0.01
+            },
+            {
+                "IGNORE": 0.11,
+                "FINALDMGp": 0.01
+            },
+            {
+                "IGNORE": 0.11,
+                "FINALDMGp": 0.02
+            },
+            {
+                "IGNORE": 0.11,
+                "FINALDMGp": 0.02
+            },
+            {
+                "IGNORE": 0.11,
+                "FINALDMGp": 0.02
+            },
+            {
+                "IGNORE": 0.11,
+                "FINALDMGp": 0.02
+            },
+            {
+                "IGNORE": 0.12,
+                "FINALDMGp": 0.02
+            },
+            {
+                "IGNORE": 0.12,
+                "FINALDMGp": 0.03
+            },
+            {
+                "IGNORE": 0.12,
+                "FINALDMGp": 0.03
+            },
+            {
+                "IGNORE": 0.12,
+                "FINALDMGp": 0.03
+            },
+            {
+                "IGNORE": 0.12,
+                "FINALDMGp": 0.03
+            },
+            {
+                "IGNORE": 0.13,
+                "FINALDMGp": 0.03
+            },
+            {
+                "IGNORE": 0.13,
+                "FINALDMGp": 0.04
+            },
+            {
+                "IGNORE": 0.13,
+                "FINALDMGp": 0.04
+            },
+            {
+                "IGNORE": 0.13,
+                "FINALDMGp": 0.04
+            },
+            {
+                "IGNORE": 0.13,
+                "FINALDMGp": 0.04
+            },
+            {
+                "IGNORE": 0.14,
+                "FINALDMGp": 0.04
+            },
+            {
+                "IGNORE": 0.14,
+                "FINALDMGp": 0.05
+            },
+            {
+                "IGNORE": 0.14,
+                "FINALDMGp": 0.05
+            },
+            {
+                "IGNORE": 0.14,
+                "FINALDMGp": 0.05
+            },
+            {
+                "IGNORE": 0.14,
+                "FINALDMGp": 0.05
+            },
+            {
+                "IGNORE": 0.15,
+                "FINALDMGp": 0.05
+            },
+            {
+                "IGNORE": 0.15,
+                "FINALDMGp": 0.06
+            },
+            {
+                "IGNORE": 0.15,
+                "FINALDMGp": 0.06
+            },
+            {
+                "IGNORE": 0.15,
+                "FINALDMGp": 0.06
+            },
+            {
+                "IGNORE": 0.15,
+                "FINALDMGp": 0.06
+            },
+            {
+                "IGNORE": 0.15,
+                "FINALDMGp": 0.06
+            }
+        ]
+    },
+    {
+        "name": "Impenetrable Skin [Passive]",
+        "img": "warrior/skin.png",
+        "passive": true,
+        "fifth": true,
+        "link_id": "impen_skin",
+        "stats": [
+            {
+                "STR": 1,
+                "HP": 50
+            },
+            {
+                "STR": 2,
+                "HP": 100
+            },
+            {
+                "STR": 3,
+                "HP": 150
+            },
+            {
+                "STR": 4,
+                "HP": 200
+            },
+            {
+                "STR": 5,
+                "HP": 250
+            },
+            {
+                "STR": 6,
+                "HP": 300
+            },
+            {
+                "STR": 7,
+                "HP": 350
+            },
+            {
+                "STR": 8,
+                "HP": 400
+            },
+            {
+                "STR": 9,
+                "HP": 450
+            },
+            {
+                "STR": 10,
+                "HP": 500
+            },
+            {
+                "STR": 11,
+                "HP": 550
+            },
+            {
+                "STR": 12,
+                "HP": 600
+            },
+            {
+                "STR": 13,
+                "HP": 650
+            },
+            {
+                "STR": 14,
+                "HP": 700
+            },
+            {
+                "STR": 15,
+                "HP": 750
+            },
+            {
+                "STR": 16,
+                "HP": 800
+            },
+            {
+                "STR": 17,
+                "HP": 850
+            },
+            {
+                "STR": 18,
+                "HP": 900
+            },
+            {
+                "STR": 19,
+                "HP": 950
+            },
+            {
+                "STR": 20,
+                "HP": 1000
+            },
+            {
+                "STR": 21,
+                "HP": 1050
+            },
+            {
+                "STR": 22,
+                "HP": 1100
+            },
+            {
+                "STR": 23,
+                "HP": 1150
+            },
+            {
+                "STR": 24,
+                "HP": 1200
+            },
+            {
+                "STR": 25,
+                "HP": 1250
+            },
+            {
+                "STR": 26,
+                "HP": 1300
+            },
+            {
+                "STR": 27,
+                "HP": 1350
+            },
+            {
+                "STR": 28,
+                "HP": 1400
+            },
+            {
+                "STR": 29,
+                "HP": 1450
+            },
+            {
+                "STR": 30,
+                "HP": 1500
+            }
+        ]
+    },
+    {
+        "name": "Impenetrable Skin [Active]",
+        "img": "warrior/skin.png",
+        "passive": false,
+        "fifth": true,
+        "link_id":"impen_skin",
+        "stats": [
+            {
+                "DMGp": 0.15
+            },
+            {
+                "DMGp": 0.15
+            },
+            {
+                "DMGp": 0.15
+            },
+            {
+                "DMGp": 0.15
+            },
+            {
+                "DMGp": 0.18
+            },
+            {
+                "DMGp": 0.18
+            },
+            {
+                "DMGp": 0.18
+            },
+            {
+                "DMGp": 0.18
+            },
+            {
+                "DMGp": 0.18
+            },
+            {
+                "DMGp": 0.21
+            },
+            {
+                "DMGp": 0.21
+            },
+            {
+                "DMGp": 0.21
+            },
+            {
+                "DMGp": 0.21
+            },
+            {
+                "DMGp": 0.21
+            },
+            {
+                "DMGp": 0.24
+            },
+            {
+                "DMGp": 0.24
+            },
+            {
+                "DMGp": 0.24
+            },
+            {
+                "DMGp": 0.24
+            },
+            {
+                "DMGp": 0.24
+            },
+            {
+                "DMGp": 0.27
+            },
+            {
+                "DMGp": 0.27
+            },
+            {
+                "DMGp": 0.27
+            },
+            {
+                "DMGp": 0.27
+            },
+            {
+                "DMGp": 0.27
+            },
+            {
+                "DMGp": 0.3
+            },
+            {
+                "DMGp": 0.3
+            },
+            {
+                "DMGp": 0.3
+            },
+            {
+                "DMGp": 0.3
+            },
+            {
+                "DMGp": 0.3
+            },
+            {
+                "DMGp": 0.33
+            }
+        ]
+    }
+]

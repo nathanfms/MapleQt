@@ -360,5 +360,21 @@
                 "MATK": 25
             }
         ]
+    },
+    {
+        "name": "Terms and Conditions [Angelic Buster]",
+        "img": "links/.png",
+        "passive": false,
+        "stats": [
+            {
+                "DMGp": 0.3
+            },
+            {
+                "DMGp": 0.45
+            },
+            {
+                "DMGp": 0.6
+            }
+        ]
     }
 ]

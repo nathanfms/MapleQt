@@ -1,0 +1,147 @@
+[
+    {
+        "name": "Maple Warrior",
+        "img": "common/mw.png",
+        "passive": false,
+        "fifth": false,
+        "stats": [
+            {
+                "MWp": 0.15
+            },
+            {
+                "MWp": 0.16
+            },
+            {
+                "MWp": 0.16
+            }
+        ]
+    },
+    {
+        "name": "Blessing of Maple World's Goddess",
+        "img": "common/maplebless.png",
+        "passive": false,
+        "fifth": true,
+        "stats": [
+            {
+                "DMGp": 0.05,
+                "MWmult": 1.1
+            },
+            {
+                "DMGp": 0.06,
+                "MWmult": 1.2
+            },
+            {
+                "DMGp": 0.06,
+                "MWmult": 1.3
+            },
+            {
+                "DMGp": 0.07,
+                "MWmult": 1.4
+            },
+            {
+                "DMGp": 0.07,
+                "MWmult": 1.5
+            },
+            {
+                "DMGp": 0.08,
+                "MWmult": 1.6
+            },
+            {
+                "DMGp": 0.08,
+                "MWmult": 1.7
+            },
+            {
+                "DMGp": 0.09,
+                "MWmult": 1.8
+            },
+            {
+                "DMGp": 0.09,
+                "MWmult": 1.9
+            },
+            {
+                "DMGp": 0.1,
+                "MWmult": 2
+            },
+            {
+                "DMGp": 0.1,
+                "MWmult": 2.1
+            },
+            {
+                "DMGp": 0.11,
+                "MWmult": 2.2
+            },
+            {
+                "DMGp": 0.11,
+                "MWmult": 2.3
+            },
+            {
+                "DMGp": 0.12,
+                "MWmult": 2.4
+            },
+            {
+                "DMGp": 0.12,
+                "MWmult": 2.5
+            },
+            {
+                "DMGp": 0.13,
+                "MWmult": 2.6
+            },
+            {
+                "DMGp": 0.13,
+                "MWmult": 2.7
+            },
+            {
+                "DMGp": 0.14,
+                "MWmult": 2.8
+            },
+            {
+                "DMGp": 0.14,
+                "MWmult": 2.9
+            },
+            {
+                "DMGp": 0.15,
+                "MWmult": 3
+            },
+            {
+                "DMGp": 0.15,
+                "MWmult": 3.1
+            },
+            {
+                "DMGp": 0.16,
+                "MWmult": 3.2
+            },
+            {
+                "DMGp": 0.16,
+                "MWmult": 3.3
+            },
+            {
+                "DMGp": 0.17,
+                "MWmult": 3.4
+            },
+            {
+                "DMGp": 0.17,
+                "MWmult": 3.5
+            },
+            {
+                "DMGp": 0.18,
+                "MWmult": 3.6
+            },
+            {
+                "DMGp": 0.18,
+                "MWmult": 3.7
+            },
+            {
+                "DMGp": 0.19,
+                "MWmult": 3.8
+            },
+            {
+                "DMGp": 0.19,
+                "MWmult": 3.9
+            },
+            {
+                "DMGp": 0.2,
+                "MWmult": 4
+            }
+        ]
+    }
+]

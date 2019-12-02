@@ -343,7 +343,7 @@ class statsController(QtWidgets.QWidget):
     @stre.setter
     def stre(self, value):
         if(value == None):
-            value = 4
+            value = 0
         self._stre = value
         self.str_entry.setText(str(self.stre))
 
@@ -354,7 +354,7 @@ class statsController(QtWidgets.QWidget):
     @dex.setter
     def dex(self, value):
         if(value == None):
-            value = 4
+            value = 0
         self._dex = value
         self.dex_entry.setText(str(self.dex))
 
@@ -365,7 +365,7 @@ class statsController(QtWidgets.QWidget):
     @inte.setter
     def inte(self, value):
         if(value == None):
-            value = 4
+            value = 0
         self._inte = value
         self.int_entry.setText(str(self.inte))
 
@@ -376,7 +376,7 @@ class statsController(QtWidgets.QWidget):
     @luk.setter
     def luk(self, value):
         if(value == None):
-            value = 4
+            value = 0
         self._luk = value
         self.luk_entry.setText(str(self.luk))
 
@@ -547,13 +547,13 @@ class statsController(QtWidgets.QWidget):
 
     @property
     def intep(self):
-        return self._inte
+        return self._intep
 
-    @inte.setter
+    @intep.setter
     def intep(self, value):
         if(value == None):
             value = 0
-        self._inte = value
+        self._intep = value
         self.int_mod.setText('{:.0%}'.format(self.intep))
 
     @property

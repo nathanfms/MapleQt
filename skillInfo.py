@@ -83,17 +83,19 @@ class skillInfo(QtWidgets.QWidget):
         self.attributes.clear()
         self.totalList.clear()
         self.currentStats.clear()
-        if(level >= len(self.json.get("stats"))):
+        if(self.json.get("fifth") and level != 0):
+            level = level - 1
+        elif(level >= len(self.json.get("stats"))):
             level = 0
         for key in self.json.get("stats")[level]:
             if(key != "passive"):
                 amount = self.json.get("stats")[level].get(key)
                 self.addStat(key, amount)
-        passive = self.json.get("stats")[level].get("passive")
-        if(passive is not None):
-            for key in passive:
-                val = passive.get(key)
-                self.addStat(key, val)
+        # passive = self.json.get("stats")[level].get("passive")
+        # if(passive is not None):
+        #     for key in passive:
+        #         val = passive.get(key)
+        #         self.addStat(key, val)
 
     def addStat(self, key, val):
         self.currentStats.update({key : val})

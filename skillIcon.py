@@ -15,7 +15,7 @@ class skillIcon(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.parent = parent
-        self.json = None
+        self._json = None
         self.toolTip = None
         self.setupUi()
 
@@ -26,6 +26,14 @@ class skillIcon(QtWidgets.QWidget):
 
         # self.retranslateUi(Form)
         # QtCore.QMetaObject.connectSlotsByName(Form)
+
+    @property
+    def json(self):
+        return self._json
+
+    @json.setter
+    def json(self, value):
+        self._json = value
 
     def getStats(self):
         return self.toolTip.currentStats

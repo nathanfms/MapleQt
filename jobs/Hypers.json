@@ -1,0 +1,147 @@
+[
+    {
+        "stat": "STR",
+        "base": 30,
+        "step": 30
+    },
+    {
+        "stat": "DEX",
+        "base": 30,
+        "step": 30
+    },
+    {
+        "stat": "INT",
+        "base": 30,
+        "step": 30
+    },
+    {
+        "stat": "LUK",
+        "base": 30,
+        "step": 30
+    },
+    {
+        "stat": "HPp",
+        "base": 0.02,
+        "step": 0.02
+    },
+    {
+        "stat": "MPp",
+        "base": 0.02,
+        "step": 0.02
+    },
+    {
+        "stat": "CRITRATEp",
+        "stats": [
+            {
+                "CRITRATEp": 0.01
+            },
+            {
+                "CRITRATEp": 0.02
+            },
+            {
+                "CRITRATEp": 0.03
+            },
+            {
+                "CRITRATEp": 0.04
+            },
+            {
+                "CRITRATEp": 0.05
+            },
+            {
+                "CRITRATEp": 0.07
+            },
+            {
+                "CRITRATEp": 0.09
+            },
+            {
+                "CRITRATEp": 0.11
+            },
+            {
+                "CRITRATEp": 0.13
+            },
+            {
+                "CRITRATEp": 0.15
+            },
+            {
+                "CRITRATEp": 0.17
+            },
+            {
+                "CRITRATEp": 0.19
+            },
+            {
+                "CRITRATEp": 0.21
+            },
+            {
+                "CRITRATEp": 0.23
+            },
+            {
+                "CRITRATEp": 0.25
+            }
+        ]
+    },
+    {
+        "stat": "CRITDMGp",
+        "base": 0.01,
+        "step": 0.01
+    },
+    {
+        "stat": "IGNORE",
+        "base": 0.03,
+        "step": 0.03
+    },
+    {
+        "stat": "BOSSDMGp",
+        "stats": [
+            {
+                "BOSSDMGp": 0.03
+            },
+            {
+                "BOSSDMGp": 0.06
+            },
+            {
+                "BOSSDMGp": 0.09
+            },
+            {
+                "BOSSDMGp": 0.12
+            },
+            {
+                "BOSSDMGp": 0.15
+            },
+            {
+                "BOSSDMGp": 0.19
+            },
+            {
+                "BOSSDMGp": 0.23
+            },
+            {
+                "BOSSDMGp": 0.27
+            },
+            {
+                "BOSSDMGp": 0.31
+            },
+            {
+                "BOSSDMGp": 0.35
+            },
+            {
+                "BOSSDMGp": 0.39
+            },
+            {
+                "BOSSDMGp": 0.43
+            },
+            {
+                "BOSSDMGp": 0.47
+            },
+            {
+                "BOSSDMGp": 0.51
+            },
+            {
+                "BOSSDMGp": 0.55
+            }
+        ]
+    },
+    {
+        "stat": "DMGp",
+        "base": 0.03,
+        "step": 0.03
+    }
+]

@@ -65,7 +65,7 @@ class Mapler(Equip):
     Changing 1 item should not have to recalculate EVERYTHING!
     """
     def getTotal(self):
-        total = {"ALL": 4, "CRITRATEp": 0.05, "SPEED": 100, "JUMP": 100} #Base stats
+        total = {"ALL": 4, "HP": 50, "CRITRATEp": 0.05, "SPEED": 100, "JUMP": 100} #Base stats
         if(type(self.statInfo.get('main')) is not list): #Xenon's will have to change their base AP manually
             total.update({self.statInfo.get('main') : 14 + int(self.level) * 5})
         eqpTotal = self.updateStatsByEqp()
