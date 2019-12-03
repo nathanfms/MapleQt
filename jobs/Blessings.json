@@ -186,5 +186,15 @@
                 "MATK": 24
             }
         ]
+    },
+    {
+        "name": "Echo of Hero",
+        "img": "common/echo.png",
+        "stats": [
+            {
+                "ATKp": 0.04,
+                "MATKp": 0.04
+            }
+        ]
     }
 ]

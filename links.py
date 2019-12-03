@@ -13,8 +13,10 @@ from Mapler import addDicts
 import json
 import os
 
+#Even though it's named after link skills, it also includes beginner skills
+
 class linkSkillController(QtWidgets.QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, valuesChanged=None):
         super().__init__(parent)
         self.passive = []
         self.passiveSpin = []
@@ -22,6 +24,7 @@ class linkSkillController(QtWidgets.QWidget):
         self.activeSpin = []
         self.activeBox = []
         self.total = {}
+        self.notifyParent = valuesChanged
         self.setupUi()
 
     def setupUi(self):
@@ -135,7 +138,7 @@ class linkSkillController(QtWidgets.QWidget):
         self.matkSpin.valueChanged.connect(self.updateTotal)
 
         self.activeLinks = QtWidgets.QLabel(self)
-        self.activeLinks.setGeometry(QtCore.QRect(280, 220, 130, 16))
+        self.activeLinks.setGeometry(QtCore.QRect(140, 220, 130, 16))
         self.activeLinks.setStyleSheet("font-size: 14px;")
         self.activeLinks.setText("Active Links: 0")
 
@@ -144,15 +147,36 @@ class linkSkillController(QtWidgets.QWidget):
         self.beginnerLabel.setStyleSheet("font-size: 14px;")
         self.beginnerLabel.setText("Beginner Passive Skills")
 
+        blessFile = open('jobs/Blessings.json')
+        blessJson = json.load(blessFile)
+
         self.blessingOfFairy = skillIcon(self)
-        
+        self.blessingOfFairy.setSkill(blessJson[0])
+        self.blessingOfFairy.setGeometry(QtCore.QRect(233, 260, 32, 32))
+        self.fairySpin = QtWidgets.QSpinBox(self)
+        self.fairySpin.setGeometry(QtCore.QRect(268, 260, 31, 22))
+        self.fairySpin.setMaximum(20)
+        self.fairySpin.valueChanged.connect(self.updateTotal)
 
-        self.rebootLabel = QtWidgets.QLabel(self)
-        self.rebootLabel.setGeometry(QtCore.QRect(233, 291, 181, 16))
-        self.rebootLabel.setStyleSheet("font-size: 14px;")
-        self.rebootLabel.setText("Reboot & Echo of Hero")
+        self.blessingOfEmpress = skillIcon(self)
+        self.blessingOfEmpress.setSkill(blessJson[1])
+        self.blessingOfEmpress.setGeometry(QtCore.QRect(303, 260, 32, 32))
+        self.empSpin = QtWidgets.QSpinBox(self)
+        self.empSpin.setGeometry(QtCore.QRect(338, 260, 31, 22))
+        self.empSpin.setMaximum(24)
+        self.empSpin.valueChanged.connect(self.updateTotal)
 
+        self.echoLabel = QtWidgets.QLabel(self)
+        self.echoLabel.setGeometry(QtCore.QRect(233, 291, 181, 16))
+        self.echoLabel.setStyleSheet("font-size: 14px;")
+        self.echoLabel.setText("Echo of Hero")
 
+        self.echo = skillIcon(self)
+        self.echo.setSkill(blessJson[2])
+        self.echo.setGeometry(QtCore.QRect(233, 310, 32, 32))
+        self.echoBox = QtWidgets.QCheckBox(self)
+        self.echoBox.setGeometry(QtCore.QRect(241, 345, 16, 17))
+        self.echoBox.stateChanged.connect(self.updateTotal)
 
     def updateTotal(self):
         self.total.clear()
@@ -176,8 +200,17 @@ class linkSkillController(QtWidgets.QWidget):
             }
             self.total = addDicts(self.total, jett)
             linksApplied += 1
+        if(self.echoBox.isChecked()):
+            self.total = addDicts(self.total, self.echo.getStats())
+        if(self.fairySpin.value() > 0):
+            self.blessingOfFairy.updateDecentLevel(self.fairySpin.value())
+            self.total = addDicts(self.total, self.blessingOfFairy.getStats())
+        if(self.empSpin.value() > 0):
+            self.blessingOfEmpress.updateDecentLevel(self.empSpin.value())
+            self.total = addDicts(self.total, self.blessingOfEmpress.getStats())
         activeString = "Active Links: " + str(linksApplied)
         self.activeLinks.setText(activeString)
+        self.notifyParent()
 
     def updatePassiveLinks(self):
         for i in range(0, len(self.passive)):

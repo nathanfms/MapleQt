@@ -54,7 +54,7 @@ class mainWindow(QtWidgets.QWidget):
 
         self.hyperLinkTab = QtWidgets.QWidget()
         self.hyperLinkTab.setObjectName("hyperLinkTab")
-        self.links = linkSkillController(self.hyperLinkTab)
+        self.links = linkSkillController(self.hyperLinkTab, valuesChanged=self.updateLinkSkills)
         self.links.setGeometry(10, 10, 375, 365)
         self.hypers = hyperController(self.hyperLinkTab)
         self.hypers.setGeometry(440, 10, 140, 265)
@@ -125,6 +125,10 @@ class mainWindow(QtWidgets.QWidget):
 
     def updateSkills(self):
         self.mapler.skills = self.skills.total
+        self.statsCntrl.update(json=self.mapler.getTotal())
+
+    def updateLinkSkills(self):
+        self.mapler.links = self.links.total
         self.statsCntrl.update(json=self.mapler.getTotal())
 
     #Equip in inventory -> Equipped

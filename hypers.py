@@ -19,6 +19,8 @@ class hyperController(QtWidgets.QWidget):
         labelStyle = "border-radius: 10px; border: 2px solid black; qproperty-alignment: AlignCenter; background-color: rgb(79, 238, 238); font-size: 12px;"
         self.resize(140, 265)
 
+        statFile = open('jobs/Hypers.json')
+
         self.titleLabel = QtWidgets.QLabel(self)
         self.titleLabel.setGeometry(QtCore.QRect(0, 0, 141, 20))
         self.titleLabel.setStyleSheet("font-size: 14px;qproperty-alignment: AlignCenter;")
