@@ -133,6 +133,8 @@ class mainWindow(QtWidgets.QWidget):
 
         self.hypers.loadLevelsFromDb(passedJson.get("hypers"))
 
+        self.legion.loadLevelsFromDb(passedJson.get("legion"))
+
         self.statsCntrl.update(json=self.mapler.getTotal())
         # self.update()
 
@@ -213,3 +215,4 @@ class mainWindow(QtWidgets.QWidget):
         self.db.updateLinks(self.links.getJsonForDb())
         self.db.updateSkills(self.skills.getJsonForDb())
         self.db.updateHypers(self.hypers.getJsonForDb())
+        self.db.updateLegion(self.legion.getJsonForDb())

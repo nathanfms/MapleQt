@@ -24,7 +24,6 @@ class legionController(QtWidgets.QWidget):
     def __init__(self, parent=None, valuesChanged=None):
         super().__init__(parent)
         self.total = {}
-        self.grid = []
         self.characters = {
             "STR": [],
             "DEX": [],
@@ -391,11 +390,43 @@ class legionController(QtWidgets.QWidget):
         self.notifyParent()
 
     def loadLevelsFromDb(self, data):
-        self.grid = data.get("grid")
+        grid = data.get("grid")
+        self.strSpinbox.setProperty("value", grid[0])
+        self.dexSpinbox.setProperty("value", grid[1])
+        self.intSpinbox.setProperty("value", grid[2])
+        self.lukSpinbox.setProperty("value", grid[3])
+        self.atkSpinbox.setProperty("value", grid[4])
+        self.matkSpinbox.setProperty("value", grid[5])
+        self.hpSpinbox.setProperty("value", grid[6])
+        self.mpSpinbox.setProperty("value", grid[7])
+        self.critrateSpinbox.setProperty("value", grid[8])
+        self.critdmgSpinbox.setProperty("value", grid[9])
+        self.ignoreSpinbox.setProperty("value", grid[10])
+        self.bossSpinbox.setProperty("value", grid[11])
+        char = data.get("characters")
+        for key in char:
+            arr = char.get(key)
+            for i in range(0, len(arr)):
+                self.characters.get(key)[i].setCurrentIndex(arr[i])
+        self.updateTotal()
 
 
     def getJsonForDb(self):
-        data = {"grid": self.grid}
+        grid = [
+            self.strSpinbox.value(),
+            self.dexSpinbox.value(),
+            self.intSpinbox.value(),
+            self.lukSpinbox.value(),
+            self.atkSpinbox.value(),
+            self.matkSpinbox.value(),
+            self.hpSpinbox.value(),
+            self.mpSpinbox.value(),
+            self.critrateSpinbox.value(),
+            self.critdmgSpinbox.value(),
+            self.ignoreSpinbox.value(),
+            self.bossSpinbox.value()
+        ]
+        data = {"grid": grid}
         charLevels = {}
         for key in self.characters:
             combos = self.characters.get(key)
