@@ -81,7 +81,7 @@ class mainWindow(QtWidgets.QWidget):
 
         self.legionTab = QtWidgets.QWidget()
         self.legionTab.setObjectName("legionTab")
-        self.legion = legionController(self.legionTab)
+        self.legion = legionController(self.legionTab, valuesChanged=self.updateLegion)
         self.legion.setGeometry(QtCore.QRect(5, 5, 621, 380))
         self.tabWidget.addTab(self.legionTab, "Legion")
 
@@ -150,6 +150,10 @@ class mainWindow(QtWidgets.QWidget):
 
     def updateHypers(self):
         self.mapler.hypers = self.hypers.total
+        self.statsCntrl.update(json=self.mapler.getTotal())
+
+    def updateLegion(self):
+        self.mapler.legion = self.legion.total
         self.statsCntrl.update(json=self.mapler.getTotal())
 
     #Equip in inventory -> Equipped

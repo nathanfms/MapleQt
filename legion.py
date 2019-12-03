@@ -8,11 +8,22 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from Mapler import addDicts
 
 class legionController(QtWidgets.QWidget):
-    def __init__(self, parent=None):
+
+    #For calculating total stat value
+    statChar = [100, 80, 40, 20, 10, 0]
+    floatChar = [0.06, 0.05, 0.03, 0.02, 0.01, 0]
+    hpChar = [2500, 2000, 1000, 500, 250, 0]
+    mpChar = [0.06, 0.05, 0.04, 0.03, 0.02, 0]
+    xenonChar = [50, 40, 20, 10, 5, 0]
+    labStnd = [25, 20, 15, 10, 5, 0]
+    labEnh = [35, 28, 21, 14, 7, 0]
+
+    def __init__(self, parent=None, valuesChanged=None):
         super().__init__(parent)
+        self.total = {}
         self.grid = []
         self.characters = {
             "STR": [],
@@ -24,10 +35,12 @@ class legionController(QtWidgets.QWidget):
             "CRITRATE": [],
             "CRITDMG": [],
             "BOSS": [],
+            "IGNORE": [],
             "XENON": [],
             "LABSTANDARD": [],
             "LABENHANCED": []
         }
+        self.notifyParent = valuesChanged
         self.setupUi()
 
     def setupUi(self):
@@ -49,6 +62,7 @@ class legionController(QtWidgets.QWidget):
         self.strSpinbox = QtWidgets.QSpinBox(self)
         self.strSpinbox.setGeometry(QtCore.QRect(110, 20, 42, 22))
         self.strSpinbox.setMaximum(15)
+        self.strSpinbox.valueChanged.connect(self.updateTotal)
         self.strSpinbox.setObjectName("strSpinbox")
 
         self.dexLabel = QtWidgets.QLabel(self)
@@ -59,6 +73,7 @@ class legionController(QtWidgets.QWidget):
         self.dexSpinbox = QtWidgets.QSpinBox(self)
         self.dexSpinbox.setGeometry(QtCore.QRect(110, 40, 42, 22))
         self.dexSpinbox.setMaximum(15)
+        self.dexSpinbox.valueChanged.connect(self.updateTotal)
         self.dexSpinbox.setObjectName("dexSpinbox")
 
         self.intLabel = QtWidgets.QLabel(self)
@@ -69,6 +84,7 @@ class legionController(QtWidgets.QWidget):
         self.intSpinbox = QtWidgets.QSpinBox(self)
         self.intSpinbox.setGeometry(QtCore.QRect(110, 60, 42, 22))
         self.intSpinbox.setMaximum(15)
+        self.intSpinbox.valueChanged.connect(self.updateTotal)
         self.intSpinbox.setObjectName("intSpinbox")
 
         self.lukLabel = QtWidgets.QLabel(self)
@@ -79,6 +95,7 @@ class legionController(QtWidgets.QWidget):
         self.lukSpinbox = QtWidgets.QSpinBox(self)
         self.lukSpinbox.setGeometry(QtCore.QRect(110, 80, 42, 22))
         self.lukSpinbox.setMaximum(15)
+        self.lukSpinbox.valueChanged.connect(self.updateTotal)
         self.lukSpinbox.setObjectName("lukSpinbox")
 
         self.atkLabel = QtWidgets.QLabel(self)
@@ -89,6 +106,7 @@ class legionController(QtWidgets.QWidget):
         self.atkSpinbox = QtWidgets.QSpinBox(self)
         self.atkSpinbox.setGeometry(QtCore.QRect(110, 100, 42, 22))
         self.atkSpinbox.setMaximum(15)
+        self.atkSpinbox.valueChanged.connect(self.updateTotal)
         self.atkSpinbox.setObjectName("atkSpinbox")
 
         self.matkLabel = QtWidgets.QLabel(self)
@@ -99,6 +117,7 @@ class legionController(QtWidgets.QWidget):
         self.matkSpinbox = QtWidgets.QSpinBox(self)
         self.matkSpinbox.setGeometry(QtCore.QRect(110, 120, 42, 22))
         self.matkSpinbox.setMaximum(15)
+        self.matkSpinbox.valueChanged.connect(self.updateTotal)
         self.matkSpinbox.setObjectName("matkSpinbox")
         
         self.hpLabel = QtWidgets.QLabel(self)
@@ -109,6 +128,7 @@ class legionController(QtWidgets.QWidget):
         self.hpSpinbox = QtWidgets.QSpinBox(self)
         self.hpSpinbox.setGeometry(QtCore.QRect(110, 140, 42, 22))
         self.hpSpinbox.setMaximum(15)
+        self.hpSpinbox.valueChanged.connect(self.updateTotal)
         self.hpSpinbox.setObjectName("hpSpinbox")
 
         self.mpLabel = QtWidgets.QLabel(self)
@@ -119,6 +139,7 @@ class legionController(QtWidgets.QWidget):
         self.mpSpinbox = QtWidgets.QSpinBox(self)
         self.mpSpinbox.setGeometry(QtCore.QRect(110, 160, 42, 22))
         self.mpSpinbox.setMaximum(15)
+        self.mpSpinbox.valueChanged.connect(self.updateTotal)
         self.mpSpinbox.setObjectName("mpSpinbox")
 
         self.critrateLabel = QtWidgets.QLabel(self)
@@ -129,6 +150,7 @@ class legionController(QtWidgets.QWidget):
         self.critrateSpinbox = QtWidgets.QSpinBox(self)
         self.critrateSpinbox.setGeometry(QtCore.QRect(110, 180, 42, 22))
         self.critrateSpinbox.setMaximum(40)
+        self.critrateSpinbox.valueChanged.connect(self.updateTotal)
         self.critrateSpinbox.setObjectName("critrateSpinbox")
 
         self.critdmgLabel = QtWidgets.QLabel(self)
@@ -139,6 +161,7 @@ class legionController(QtWidgets.QWidget):
         self.critdmgSpinbox = QtWidgets.QSpinBox(self)
         self.critdmgSpinbox.setGeometry(QtCore.QRect(110, 200, 42, 22))
         self.critdmgSpinbox.setMaximum(40)
+        self.critdmgSpinbox.valueChanged.connect(self.updateTotal)
         self.critdmgSpinbox.setObjectName("critdmgSpinbox")
 
         self.ignoreLabel = QtWidgets.QLabel(self)
@@ -149,6 +172,7 @@ class legionController(QtWidgets.QWidget):
         self.ignoreSpinbox = QtWidgets.QSpinBox(self)
         self.ignoreSpinbox.setGeometry(QtCore.QRect(110, 220, 42, 22))
         self.ignoreSpinbox.setMaximum(40)
+        self.ignoreSpinbox.valueChanged.connect(self.updateTotal)
         self.ignoreSpinbox.setObjectName("ignoreSpinbox")
         
         self.bossLabel = QtWidgets.QLabel(self)
@@ -159,6 +183,7 @@ class legionController(QtWidgets.QWidget):
         self.bossSpinbox = QtWidgets.QSpinBox(self)
         self.bossSpinbox.setGeometry(QtCore.QRect(110, 240, 42, 22))
         self.bossSpinbox.setMaximum(40)
+        self.bossSpinbox.valueChanged.connect(self.updateTotal)
         self.bossSpinbox.setObjectName("bossSpinbox")
 
         #Character Bonuses
@@ -242,22 +267,30 @@ class legionController(QtWidgets.QWidget):
         #2 available boss characters
         self.populateComboBoxes("BOSS", 2, 268)
 
+        self.ignoreCharLabel = QtWidgets.QLabel(self)
+        self.ignoreCharLabel.setGeometry(QtCore.QRect(176, 300, 61, 22))
+        self.ignoreCharLabel.setStyleSheet(labelStyle)
+        self.ignoreCharLabel.setText("IGNORE:")
+
+        #2 available ignore characters
+        self.populateComboBoxes("IGNORE", 2, 298)
+
         self.xenonLabel = QtWidgets.QLabel(self)
-        self.xenonLabel.setGeometry(QtCore.QRect(176, 300, 61, 22))
+        self.xenonLabel.setGeometry(QtCore.QRect(176, 330, 61, 22))
         self.xenonLabel.setStyleSheet(labelStyle)
         self.xenonLabel.setText("XENON:")
 
         #1 xenon 😂
-        self.populateComboBoxes("XENON", 1, 298)
+        self.populateComboBoxes("XENON", 1, 328)
     
         self.lab1Label = QtWidgets.QLabel(self)
-        self.lab1Label.setGeometry(QtCore.QRect(291, 300, 91, 22))
+        self.lab1Label.setGeometry(QtCore.QRect(291, 330, 91, 22))
         self.lab1Label.setStyleSheet(labelStyle)
         self.lab1Label.setText("LAB Standard:")
 
         #1 lab standard, can't use method due to placement
         box = QtWidgets.QComboBox(self)
-        box.setGeometry(QtCore.QRect(385, 298, 42, 22))
+        box.setGeometry(QtCore.QRect(385, 328, 42, 22))
         box.addItem("250")
         box.addItem("200")
         box.addItem("140")
@@ -265,16 +298,17 @@ class legionController(QtWidgets.QWidget):
         box.addItem("60")
         box.addItem("0")
         box.setCurrentIndex(5)
+        box.currentIndexChanged.connect(self.updateTotal)
         self.characters.get("LABSTANDARD").append(box)
 
         self.lab2Label = QtWidgets.QLabel(self)
-        self.lab2Label.setGeometry(QtCore.QRect(430, 300, 101, 22))
+        self.lab2Label.setGeometry(QtCore.QRect(430, 330, 101, 22))
         self.lab2Label.setStyleSheet(labelStyle)
         self.lab2Label.setText("LAB Enhanced:")
 
         #1 lab enhanced, can't use method due to placement
         box = QtWidgets.QComboBox(self)
-        box.setGeometry(QtCore.QRect(534, 298, 42, 22))
+        box.setGeometry(QtCore.QRect(534, 328, 42, 22))
         box.addItem("250")
         box.addItem("200")
         box.addItem("140")
@@ -282,23 +316,95 @@ class legionController(QtWidgets.QWidget):
         box.addItem("60")
         box.addItem("0")
         box.setCurrentIndex(5)
+        box.currentIndexChanged.connect(self.updateTotal)
         self.characters.get("LABENHANCED").append(box)
 
         self.clear = QtWidgets.QPushButton(self)
-        self.clear.setGeometry(QtCore.QRect(280, 330, 101, 31))
+        self.clear.setGeometry(QtCore.QRect(30, 340, 101, 31))
         self.clear.setText("CLEAR ALL")
         self.clear.clicked.connect(self.clearCombos)
         
 
         self.all140 = QtWidgets.QPushButton(self)
-        self.all140.setGeometry(QtCore.QRect(390, 330, 101, 31))
+        self.all140.setGeometry(QtCore.QRect(30, 305, 101, 31))
         self.all140.setText("SET ALL TO 140")
         self.all140.clicked.connect(self.combosTo140)
 
         self.all200 = QtWidgets.QPushButton(self)
-        self.all200.setGeometry(QtCore.QRect(500, 330, 101, 31))
+        self.all200.setGeometry(QtCore.QRect(30, 270, 101, 31))
         self.all200.setText("SET ALL TO 200")
         self.all200.clicked.connect(self.combosTo200)
+
+    def updateTotal(self):
+        self.total.clear()
+        self.total.update({"STR": self.strSpinbox.value() * 5})
+        self.total.update({"DEX": self.dexSpinbox.value() * 5})
+        self.total.update({"INT": self.intSpinbox.value() * 5})
+        self.total.update({"LUK": self.lukSpinbox.value() * 5})
+        self.total.update({"ATK": self.atkSpinbox.value()})
+        self.total.update({"MATK": self.matkSpinbox.value()})
+        self.total.update({"HP": self.hpSpinbox.value() * 250})
+        self.total.update({"MP": self.mpSpinbox.value() * 250})
+        self.total.update({"CRITRATEp": float(self.critrateSpinbox.value())})
+        self.total.update({"CRITDMGp": self.critdmgSpinbox.value() * 0.5})
+        self.total.update({"IGNORE": float(self.ignoreSpinbox.value())})
+        self.total.update({"BOSSp": float(self.bossSpinbox.value())})
+        charValues = {}
+        for key in self.characters:
+            arr = self.characters.get(key)
+            val = 0
+            if(key in ["STR", "DEX", "INT", "LUK"]):
+                for box in arr:
+                    val += self.statChar[box.currentIndex()]
+            elif(key in ["CRITRATE", "CRITDMG", "BOSS"]):
+                for box in arr:
+                    val += self.floatChar[box.currentIndex()]
+                key = key + 'p'
+            elif(key == "IGNORE"):
+                for box in arr:
+                    val += self.floatChar[box.currentIndex()]
+            elif(key == "HP"):
+                for box in arr:
+                    val += self.hpChar[box.currentIndex()]
+            elif(key == "MP"):
+                for box in arr:
+                    val += self.mpChar[box.currentIndex()]
+                key = key + 'p'
+            elif(key == "XENON"):
+                xenon = {
+                    "STR": self.xenonChar[arr[0].currentIndex()],
+                    "DEX": self.xenonChar[arr[0].currentIndex()],
+                    "LUK": self.xenonChar[arr[0].currentIndex()]
+                }
+                charValues = addDicts(charValues, xenon)
+                continue
+            elif(key == "LABSTANDARD"):
+                key = "ATK"
+                val = self.labStnd[arr[0].currentIndex()]
+                charValues.update({"MATK": val})
+            elif(key == "LABENHANCED"):
+                key = "ATK"
+                val = self.labEnh[arr[0].currentIndex()]
+                charValues.update({"MATK": val})
+            charValues.update({key : val})
+        self.total = addDicts(self.total, charValues)
+        self.notifyParent()
+
+    def loadLevelsFromDb(self, data):
+        self.grid = data.get("grid")
+
+
+    def getJsonForDb(self):
+        data = {"grid": self.grid}
+        charLevels = {}
+        for key in self.characters:
+            combos = self.characters.get(key)
+            arr = []
+            for c in combos:
+                arr.append(c.currentIndex())
+            charLevels.update({key : arr})
+        data.update({"characters" : charLevels})
+        return data
 
     def clearCombos(self):
         for key in self.characters:
@@ -329,4 +435,5 @@ class legionController(QtWidgets.QWidget):
             combo.addItem("60")
             combo.addItem("0")
             combo.setCurrentIndex(5)
+            combo.currentIndexChanged.connect(self.updateTotal)
             self.characters.get(statName).append(combo)

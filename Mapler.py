@@ -21,7 +21,7 @@ class Mapler(Equip):
         self._equips = {}
         self._skills = {}
         self._links = {}
-        self._legion = self.json.get("legion")
+        self._legion = {}
         self._hypers = {}
         self._symbols = self.json.get("symbols")
         self._invIds = self.json.get("inventory")
@@ -78,6 +78,7 @@ class Mapler(Equip):
         total = addDicts(total, self.skills)
         total = addDicts(total, self.links)
         total = addDicts(total, self.hypers)
+        total = addDicts(total, self.legion)
         return total
         # self._baseStats.update(statInfo.get('main') = 14 * self.level * 5)
 
@@ -425,4 +426,12 @@ class Mapler(Equip):
     @hypers.setter
     def hypers(self, value):
         self._hypers = value
+
+    @property
+    def legion(self):
+        return self._legion
+
+    @legion.setter
+    def legion(self, value):
+        self._legion = value
 
