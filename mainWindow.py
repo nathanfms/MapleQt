@@ -128,6 +128,8 @@ class mainWindow(QtWidgets.QWidget):
 
         self.links.loadLevelsFromDb(passedJson.get("links"))
 
+        self.hypers.loadLevelsFromDb(passedJson.get("hypers"))
+
         self.statsCntrl.update(json=self.mapler.getTotal())
         # self.update()
 
@@ -203,3 +205,4 @@ class mainWindow(QtWidgets.QWidget):
         print("i'm saving")
         self.db.updateLinks(self.links.getJsonForDb())
         self.db.updateSkills(self.skills.getJsonForDb())
+        self.db.updateHypers(self.hypers.getJsonForDb())
