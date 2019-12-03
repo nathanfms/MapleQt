@@ -8,11 +8,14 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import json
 
 
 class hyperController(QtWidgets.QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, valuesChanged=None):
         super().__init__(parent)
+        self.total = {}
+        self.notifyParent = valuesChanged
         self.setupUi()
 
     def setupUi(self):
@@ -20,6 +23,7 @@ class hyperController(QtWidgets.QWidget):
         self.resize(140, 265)
 
         statFile = open('jobs/Hypers.json')
+        self.statJson = json.load(statFile)
 
         self.titleLabel = QtWidgets.QLabel(self)
         self.titleLabel.setGeometry(QtCore.QRect(0, 0, 141, 20))
@@ -35,7 +39,8 @@ class hyperController(QtWidgets.QWidget):
         self.strSpinbox = QtWidgets.QSpinBox(self)
         self.strSpinbox.setGeometry(QtCore.QRect(90, 20, 42, 22))
         self.strSpinbox.setMaximum(15)
-        self.strSpinbox.setObjectName("strSpinbox")
+        self.strSpinbox.setObjectName("STR")
+        self.strSpinbox.valueChanged.connect(self.getTotal)
 
         self.dexLabel = QtWidgets.QLabel(self)
         self.dexLabel.setGeometry(QtCore.QRect(0, 40, 81, 22))
@@ -45,7 +50,8 @@ class hyperController(QtWidgets.QWidget):
         self.dexSpinbox = QtWidgets.QSpinBox(self)
         self.dexSpinbox.setGeometry(QtCore.QRect(90, 40, 42, 22))
         self.dexSpinbox.setMaximum(15)
-        self.dexSpinbox.setObjectName("dexSpinbox")
+        self.dexSpinbox.setObjectName("DEX")
+        self.dexSpinbox.valueChanged.connect(self.getTotal)
         
         self.intLabel = QtWidgets.QLabel(self)
         self.intLabel.setGeometry(QtCore.QRect(0, 60, 81, 22))
@@ -55,7 +61,8 @@ class hyperController(QtWidgets.QWidget):
         self.intSpinbox = QtWidgets.QSpinBox(self)
         self.intSpinbox.setGeometry(QtCore.QRect(90, 60, 42, 22))
         self.intSpinbox.setMaximum(15)
-        self.intSpinbox.setObjectName("intSpinbox")
+        self.intSpinbox.setObjectName("INT")
+        self.intSpinbox.valueChanged.connect(self.getTotal)
 
         self.lukLabel = QtWidgets.QLabel(self)
         self.lukLabel.setGeometry(QtCore.QRect(0, 80, 81, 22))
@@ -65,7 +72,8 @@ class hyperController(QtWidgets.QWidget):
         self.lukSpinbox = QtWidgets.QSpinBox(self)
         self.lukSpinbox.setGeometry(QtCore.QRect(90, 80, 42, 22))
         self.lukSpinbox.setMaximum(15)
-        self.lukSpinbox.setObjectName("lukSpinbox")
+        self.lukSpinbox.setObjectName("LUK")
+        self.lukSpinbox.valueChanged.connect(self.getTotal)
 
         self.hpLabel = QtWidgets.QLabel(self)
         self.hpLabel.setGeometry(QtCore.QRect(0, 100, 81, 21))
@@ -75,7 +83,8 @@ class hyperController(QtWidgets.QWidget):
         self.hpSpinbox = QtWidgets.QSpinBox(self)
         self.hpSpinbox.setGeometry(QtCore.QRect(90, 100, 42, 22))
         self.hpSpinbox.setMaximum(15)
-        self.hpSpinbox.setObjectName("hpSpinbox")
+        self.hpSpinbox.setObjectName("HPp")
+        self.hpSpinbox.valueChanged.connect(self.getTotal)
 
         self.mpLabel = QtWidgets.QLabel(self)
         self.mpLabel.setGeometry(QtCore.QRect(0, 120, 81, 22))
@@ -85,7 +94,8 @@ class hyperController(QtWidgets.QWidget):
         self.mpSpinbox = QtWidgets.QSpinBox(self)
         self.mpSpinbox.setGeometry(QtCore.QRect(90, 120, 42, 22))
         self.mpSpinbox.setMaximum(15)
-        self.mpSpinbox.setObjectName("mpSpinbox")
+        self.mpSpinbox.setObjectName("MPp")
+        self.mpSpinbox.valueChanged.connect(self.getTotal)
 
         self.critrateLabel = QtWidgets.QLabel(self)
         self.critrateLabel.setGeometry(QtCore.QRect(0, 140, 81, 22))
@@ -95,7 +105,8 @@ class hyperController(QtWidgets.QWidget):
         self.critrateSpinbox = QtWidgets.QSpinBox(self)
         self.critrateSpinbox.setGeometry(QtCore.QRect(90, 140, 42, 22))
         self.critrateSpinbox.setMaximum(15)
-        self.critrateSpinbox.setObjectName("critrateSpinbox")   
+        self.critrateSpinbox.setObjectName("CRITRATEp")
+        self.critrateSpinbox.valueChanged.connect(self.getTotal) 
         
         self.critdmgLabel = QtWidgets.QLabel(self)
         self.critdmgLabel.setGeometry(QtCore.QRect(0, 160, 81, 22))
@@ -105,7 +116,8 @@ class hyperController(QtWidgets.QWidget):
         self.critdmgSpinbox = QtWidgets.QSpinBox(self)
         self.critdmgSpinbox.setGeometry(QtCore.QRect(90, 160, 42, 22))
         self.critdmgSpinbox.setMaximum(15)
-        self.critdmgSpinbox.setObjectName("critdmgSpinbox")
+        self.critdmgSpinbox.setObjectName("CRITDMGp")
+        self.critdmgSpinbox.valueChanged.connect(self.getTotal)
         
         self.ignoreLabel = QtWidgets.QLabel(self)
         self.ignoreLabel.setGeometry(QtCore.QRect(0, 180, 81, 22))
@@ -115,7 +127,8 @@ class hyperController(QtWidgets.QWidget):
         self.ignoreSpinbox = QtWidgets.QSpinBox(self)
         self.ignoreSpinbox.setGeometry(QtCore.QRect(90, 180, 42, 22))
         self.ignoreSpinbox.setMaximum(15)
-        self.ignoreSpinbox.setObjectName("ignoreSpinbox")
+        self.ignoreSpinbox.setObjectName("IGNORE")
+        self.ignoreSpinbox.valueChanged.connect(self.getTotal)
 
         self.bossLabel = QtWidgets.QLabel(self)
         self.bossLabel.setGeometry(QtCore.QRect(0, 200, 81, 22))
@@ -125,7 +138,8 @@ class hyperController(QtWidgets.QWidget):
         self.bossSpinbox = QtWidgets.QSpinBox(self)
         self.bossSpinbox.setGeometry(QtCore.QRect(90, 200, 42, 22))
         self.bossSpinbox.setMaximum(15)
-        self.bossSpinbox.setObjectName("bossSpinbox")
+        self.bossSpinbox.setObjectName("BOSSp")
+        self.bossSpinbox.valueChanged.connect(self.getTotal)
 
         self.dmgLabel = QtWidgets.QLabel(self)
         self.dmgLabel.setGeometry(QtCore.QRect(0, 220, 81, 22))
@@ -135,7 +149,8 @@ class hyperController(QtWidgets.QWidget):
         self.dmgSpinbox = QtWidgets.QSpinBox(self)
         self.dmgSpinbox.setGeometry(QtCore.QRect(90, 220, 42, 22))
         self.dmgSpinbox.setMaximum(15)
-        self.dmgSpinbox.setObjectName("dmgSpinbox")
+        self.dmgSpinbox.setObjectName("DMGp")
+        self.dmgSpinbox.valueChanged.connect(self.getTotal)
 
         self.atkLabel = QtWidgets.QLabel(self)
         self.atkLabel.setGeometry(QtCore.QRect(0, 240, 81, 22))
@@ -145,5 +160,20 @@ class hyperController(QtWidgets.QWidget):
         self.atkSpinbox = QtWidgets.QSpinBox(self)
         self.atkSpinbox.setGeometry(QtCore.QRect(90, 240, 42, 22))
         self.atkSpinbox.setMaximum(15)
-        self.atkSpinbox.setObjectName("atkSpinbox")
+        self.atkSpinbox.setObjectName("ATK")
+        self.atkSpinbox.valueChanged.connect(self.getTotal)
        
+    def getTotal(self):
+        self.total.clear()
+        for stat in self.statJson:
+            statName = stat.get("stat")
+            child = self.findChild(QtWidgets.QSpinBox, statName)
+            base = stat.get("base")
+            if(base is not None and child.value() > 0):
+                step = stat.get("step")
+                self.total.update({statName : base + ((child.value() - 1) * step)})
+            elif(child.value() > 0):
+                value = stat.get("stats")[child.value() - 1]
+                for key in value:  
+                    self.total.update({key : value.get(key)})
+        self.notifyParent()

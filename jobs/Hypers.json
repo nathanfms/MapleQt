@@ -90,52 +90,52 @@
         "step": 0.03
     },
     {
-        "stat": "BOSSDMGp",
+        "stat": "BOSSp",
         "stats": [
             {
-                "BOSSDMGp": 0.03
+                "BOSSp": 0.03
             },
             {
-                "BOSSDMGp": 0.06
+                "BOSSp": 0.06
             },
             {
-                "BOSSDMGp": 0.09
+                "BOSSp": 0.09
             },
             {
-                "BOSSDMGp": 0.12
+                "BOSSp": 0.12
             },
             {
-                "BOSSDMGp": 0.15
+                "BOSSp": 0.15
             },
             {
-                "BOSSDMGp": 0.19
+                "BOSSp": 0.19
             },
             {
-                "BOSSDMGp": 0.23
+                "BOSSp": 0.23
             },
             {
-                "BOSSDMGp": 0.27
+                "BOSSp": 0.27
             },
             {
-                "BOSSDMGp": 0.31
+                "BOSSp": 0.31
             },
             {
-                "BOSSDMGp": 0.35
+                "BOSSp": 0.35
             },
             {
-                "BOSSDMGp": 0.39
+                "BOSSp": 0.39
             },
             {
-                "BOSSDMGp": 0.43
+                "BOSSp": 0.43
             },
             {
-                "BOSSDMGp": 0.47
+                "BOSSp": 0.47
             },
             {
-                "BOSSDMGp": 0.51
+                "BOSSp": 0.51
             },
             {
-                "BOSSDMGp": 0.55
+                "BOSSp": 0.55
             }
         ]
     },
@@ -143,5 +143,70 @@
         "stat": "DMGp",
         "base": 0.03,
         "step": 0.03
+    },
+    {
+        "stat": "ATK",
+        "stats": [
+            {
+                "ATK": 3,
+                "MATK": 3
+            },
+            {
+                "ATK": 6,
+                "MATK": 6
+            },
+            {
+                "ATK": 9,
+                "MATK": 9
+            },
+            {
+                "ATK": 12,
+                "MATK": 12
+            },
+            {
+                "ATK": 15,
+                "MATK": 15
+            },
+            {
+                "ATK": 18,
+                "MATK": 18
+            },
+            {
+                "ATK": 21,
+                "MATK": 21
+            },
+            {
+                "ATK": 24,
+                "MATK": 24
+            },
+            {
+                "ATK": 27,
+                "MATK": 27
+            },
+            {
+                "ATK": 30,
+                "MATK": 30
+            },
+            {
+                "ATK": 33,
+                "MATK": 33
+            },
+            {
+                "ATK": 36,
+                "MATK": 36
+            },
+            {
+                "ATK": 39,
+                "MATK": 39
+            },
+            {
+                "ATK": 42,
+                "MATK": 42
+            },
+            {
+                "ATK": 45,
+                "MATK": 45
+            }
+        ]
     }
 ]

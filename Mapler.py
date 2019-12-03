@@ -77,6 +77,7 @@ class Mapler(Equip):
         total = addDicts(total, symTotal)
         total = addDicts(total, self.skills)
         total = addDicts(total, self.links)
+        total = addDicts(total, self.hypers)
         return total
         # self._baseStats.update(statInfo.get('main') = 14 * self.level * 5)
 
@@ -416,4 +417,12 @@ class Mapler(Equip):
     @links.setter
     def links(self, value):
         self._links = value
+
+    @property
+    def hypers(self):
+        return self._hypers
+
+    @hypers.setter
+    def hypers(self, value):
+        self._hypers = value
 
