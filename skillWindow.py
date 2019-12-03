@@ -240,9 +240,6 @@ class skillController(QtWidgets.QWidget):
 
     def loadJobSkills(self, jobJson):
         jobSkills = jobJson.get("skills")
-        # commonVSkills = 
-        # commonFile = json.get("common")
-        # branchFile = json.get("branch")
         commonFile = open(os.path.join("jobs", jobJson.get("common")))
         branchFile = open(os.path.join("jobs", jobJson.get("branch")))
         commonSkills = json.load(commonFile)
@@ -303,6 +300,22 @@ class skillController(QtWidgets.QWidget):
 
         self.updateTotal()
 
+    def loadLevelsFromDb(self, data):
+        passiveLevels = data.get("decentPassive")
+        fifthLevels = data.get("fifthSkills")
+        self.fifthSeSpin.setProperty("value", passiveLevels[0])
+        self.fifthHbSpin.setProperty("value", passiveLevels[1])
+        self.fifthDoorSpin.setProperty("value", passiveLevels[2])
+        self.fifthBlinkSpin.setProperty("value", passiveLevels[3])
+        self.fifthRopeSpin.setProperty("value", passiveLevels[4])
+        self.fifthSiSpin.setProperty("value", passiveLevels[5])
+        allFifthSkills = self.activeFifth + self.passiveFifth
+        allFifthSpins = self.activeFifthSpins + self.passiveFifthSpins
+        for skill in fifthLevels:
+            for i in range(0, len(allFifthSkills)):
+                if(skill.get("name") in allFifthSkills[i].json.get("name")):
+                    allFifthSpins[i].setProperty("value", skill.get("level"))
+        self.updateTotal()
 
     #This is awful and I hate everything about it.. thank you combat orders
     def decentCombatOrders(self):
@@ -339,7 +352,9 @@ class skillController(QtWidgets.QWidget):
             if(self.passiveFifthSpins[i].value() > 0):
                 self.total = addDicts(self.total, self.passiveFifth[i].getStats())
         for i in range(0, len(self.activeFifth)):
-            if(self.activeFifthBoxes[i].isChecked() and self.activeFifthSpins[i].value() > 0):
+            if(self.activeFifthBoxes[i].isChecked()):
+                if(self.activeFifthSpins[i].value() == 0):
+                    self.activeFifthSpins[i].setProperty("value", 1)
                 self.total = addDicts(self.total, self.activeFifth[i].getStats())
         if(self.decSeBox.isChecked()):
             self.total = addDicts(self.total, self.decSeLabel.getStats())

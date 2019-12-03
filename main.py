@@ -69,6 +69,9 @@ class MainWindow(QMainWindow):
         self.createMapler.close()
         self.center.setupMapler(self._currentChar)
 
+    def closeEvent(self, event):
+        self.center.save()
+
 #Maybe make a widget that has them both, then add that widget to the window? this shit crazy
 #zetcode.com seems to be your saving grace
 

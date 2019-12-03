@@ -22,7 +22,7 @@ class Mapler(Equip):
         self._skills = {}
         self._links = {}
         self._legion = self.json.get("legion")
-        self._hypers = self.json.get("hypers")
+        self._hypers = {}
         self._symbols = self.json.get("symbols")
         self._invIds = self.json.get("inventory")
         self._inventory = {}

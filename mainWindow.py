@@ -115,6 +115,9 @@ class mainWindow(QtWidgets.QWidget):
         openSkills = open(os.path.join("jobs", jsonFile))
         jsonSkills = json.load(openSkills)
         self.skills.loadJobSkills(jsonSkills)
+        self.skills.loadLevelsFromDb(passedJson.get("skills"))
+
+        self.links.loadLevelsFromDb(passedJson.get("links"))
 
         self.statsCntrl.update(json=self.mapler.getTotal())
         # self.update()
@@ -186,3 +189,6 @@ class mainWindow(QtWidgets.QWidget):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.hyperLinkTab), _translate("Form", "Hyper + Links"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.skillTab), _translate("Form", "Skills"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.legionTab), _translate("Form", "Legion"))
+
+    def save(self):
+        print("yo yo i'm saving")

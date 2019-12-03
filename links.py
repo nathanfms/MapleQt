@@ -178,6 +178,27 @@ class linkSkillController(QtWidgets.QWidget):
         self.echoBox.setGeometry(QtCore.QRect(241, 345, 16, 17))
         self.echoBox.stateChanged.connect(self.updateTotal)
 
+    def loadLevelsFromDb(self, data):
+        passiveLevels = data.get("passive")
+        activeLevels = data.get("active")
+        jettValues = data.get("jett")
+        beginnerLevels = data.get("beginner")
+        for i in range(0, len(self.passive)):
+            self.passiveSpin[i].setProperty("value", passiveLevels[i])
+        for i in range(0, len(self.active)):
+            self.activeBox[i].setChecked(activeLevels[i].get("enabled"))
+            self.activeSpin[i].setProperty("value", activeLevels[i].get("level"))
+        self.strSpin.setProperty("value", jettValues.get("STR"))
+        self.dexSpin.setProperty("value", jettValues.get("DEX"))
+        self.intSpin.setProperty("value", jettValues.get("INT"))
+        self.lukSpin.setProperty("value", jettValues.get("LUK"))
+        self.atkSpin.setProperty("value", jettValues.get("ATK"))
+        self.matkSpin.setProperty("value", jettValues.get("MATK"))
+        self.jettBox.setChecked(jettValues.get("enabled"))
+        self.fairySpin.setProperty("value", beginnerLevels.get("fairy"))
+        self.empSpin.setProperty("value", beginnerLevels.get("empress"))
+
+
     def updateTotal(self):
         self.total.clear()
         linksApplied = 0
@@ -186,6 +207,8 @@ class linkSkillController(QtWidgets.QWidget):
                 self.total = addDicts(self.total, self.passive[i].getStats())
                 linksApplied += 1
         for i in range(0, len(self.active)):
+            if(self.activeBox[i].isChecked() and self.activeSpin[i].value() == 0):
+                self.activeSpin[i].setProperty("value", 1)
             if(self.activeBox[i].isChecked() and self.activeSpin[i].value() != 0):
                 self.total = addDicts(self.total, self.active[i].getStats())
                 linksApplied += 1
