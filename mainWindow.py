@@ -18,6 +18,7 @@ from symbols import Symbols
 from Mapler import Mapler
 from skillWindow import skillController
 from links import linkSkillController
+from hypers import hyperController
 
 class mainWindow(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -25,11 +26,11 @@ class mainWindow(QtWidgets.QWidget):
         self.setupUi()
 
     def setupUi(self):
-        self.resize(960, 390)
-        self.setMinimumSize(960, 390)
-        self.setMaximumSize(960, 390)
+        self.resize(960, 410)
+        self.setMinimumSize(960, 410)
+        self.setMaximumSize(960, 410)
         self.tabWidget = QtWidgets.QTabWidget(self)
-        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 621, 381))
+        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 621, 410))
         self.tabWidget.setObjectName("tabWidget")
 
         self.equipTab = QtWidgets.QWidget()
@@ -54,7 +55,9 @@ class mainWindow(QtWidgets.QWidget):
         self.hyperLinkTab = QtWidgets.QWidget()
         self.hyperLinkTab.setObjectName("hyperLinkTab")
         self.links = linkSkillController(self.hyperLinkTab)
-        self.links.setGeometry(10, 10, 375, 215)
+        self.links.setGeometry(10, 10, 375, 365)
+        self.hypers = hyperController(self.hyperLinkTab)
+        self.hypers.setGeometry(440, 10, 140, 265)
         self.tabWidget.addTab(self.hyperLinkTab, "Hypers + Skills [1/2]")
 
         # self.tabWidget.addTab() what is this?

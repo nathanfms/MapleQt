@@ -105,9 +105,10 @@ class skillInfo(QtWidgets.QWidget):
         item.setSizeHint(QtCore.QSize(85, 21))
         self.attributes.addItem(item)
         itemVal = QtWidgets.QListWidgetItem()
-        if(val > 0 and val < 1): #percentage
-            val = int(val * 100)
-            val = str(val) + "%"
+        if(isinstance(val, float)): #percentage
+            # val = int(val * 100)
+            # val = str(val) + "%"
+            val = '{:.0%}'.format(val) 
         val = "+" + str(val)
         itemVal.setText(val)
         itemVal.setSizeHint(QtCore.QSize(64, 21))

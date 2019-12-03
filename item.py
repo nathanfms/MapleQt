@@ -321,7 +321,7 @@ class itemInfo(QtWidgets.QWidget):
             self.stars.setText(_translate("Form", "0*"))
         # self.stars.setText(_translate("Form", str(self.json["star"]["amount"]) + '*'))
         self.itemName.setText(_translate("Form", self.json["name"]))
-        self.range.setText(_translate("Form", "+69,696,420"))
+        self.range.setText(_translate("Form", "+99,999,999"))
         __sortingEnabled = self.attributes.isSortingEnabled()
         self.attributes.setSortingEnabled(False)
 

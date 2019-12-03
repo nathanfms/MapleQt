@@ -105,28 +105,28 @@
         "passive": false,
         "stats": [
             {
-                "DMGp": 0.01,
-                "IGNORE": 0.01
-            },
-            {
-                "DMGp": 0.01,
-                "IGNORE": 0.01
-            },
-            {
-                "DMGp": 0.02,
-                "IGNORE": 0.02
-            },
-            {
-                "DMGp": 0.02,
-                "IGNORE": 0.02
-            },
-            {
                 "DMGp": 0.03,
                 "IGNORE": 0.03
             },
             {
                 "DMGp": 0.03,
                 "IGNORE": 0.03
+            },
+            {
+                "DMGp": 0.06,
+                "IGNORE": 0.06
+            },
+            {
+                "DMGp": 0.06,
+                "IGNORE": 0.06
+            },
+            {
+                "DMGp": 0.09,
+                "IGNORE": 0.09
+            },
+            {
+                "DMGp": 0.09,
+                "IGNORE": 0.09
             }
         ]
     },

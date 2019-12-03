@@ -1,0 +1,190 @@
+[
+    {
+        "name": "Blessing of the Fairy",
+        "img": "common/blessingfairy.png",
+        "stats": [
+            {
+                "ATK": 1,
+                "MATK": 1
+            },
+            {
+                "ATK": 2,
+                "MATK": 2
+            },
+            {
+                "ATK": 3,
+                "MATK": 3
+            },
+            {
+                "ATK": 4,
+                "MATK": 4
+            },
+            {
+                "ATK": 5,
+                "MATK": 5
+            },
+            {
+                "ATK": 6,
+                "MATK": 6
+            },
+            {
+                "ATK": 7,
+                "MATK": 7
+            },
+            {
+                "ATK": 8,
+                "MATK": 8
+            },
+            {
+                "ATK": 9,
+                "MATK": 9
+            },
+            {
+                "ATK": 10,
+                "MATK": 10
+            },
+            {
+                "ATK": 11,
+                "MATK": 11
+            },
+            {
+                "ATK": 12,
+                "MATK": 12
+            },
+            {
+                "ATK": 13,
+                "MATK": 13
+            },
+            {
+                "ATK": 14,
+                "MATK": 14
+            },
+            {
+                "ATK": 15,
+                "MATK": 15
+            },
+            {
+                "ATK": 16,
+                "MATK": 16
+            },
+            {
+                "ATK": 17,
+                "MATK": 17
+            },
+            {
+                "ATK": 18,
+                "MATK": 18
+            },
+            {
+                "ATK": 19,
+                "MATK": 19
+            },
+            {
+                "ATK": 20,
+                "MATK": 20
+            }
+        ]
+    },
+    {
+        "name": "Empress's Blessing",
+        "img": "common/blessingempress.png",
+        "stats": [
+            {
+                "ATK": 1,
+                "MATK": 1
+            },
+            {
+                "ATK": 2,
+                "MATK": 2
+            },
+            {
+                "ATK": 3,
+                "MATK": 3
+            },
+            {
+                "ATK": 4,
+                "MATK": 4
+            },
+            {
+                "ATK": 5,
+                "MATK": 5
+            },
+            {
+                "ATK": 6,
+                "MATK": 6
+            },
+            {
+                "ATK": 7,
+                "MATK": 7
+            },
+            {
+                "ATK": 8,
+                "MATK": 8
+            },
+            {
+                "ATK": 9,
+                "MATK": 9
+            },
+            {
+                "ATK": 10,
+                "MATK": 10
+            },
+            {
+                "ATK": 11,
+                "MATK": 11
+            },
+            {
+                "ATK": 12,
+                "MATK": 12
+            },
+            {
+                "ATK": 13,
+                "MATK": 13
+            },
+            {
+                "ATK": 14,
+                "MATK": 14
+            },
+            {
+                "ATK": 15,
+                "MATK": 15
+            },
+            {
+                "ATK": 16,
+                "MATK": 16
+            },
+            {
+                "ATK": 17,
+                "MATK": 17
+            },
+            {
+                "ATK": 18,
+                "MATK": 18
+            },
+            {
+                "ATK": 19,
+                "MATK": 19
+            },
+            {
+                "ATK": 20,
+                "MATK": 20
+            },
+            {
+                "ATK": 21,
+                "MATK": 21
+            },
+            {
+                "ATK": 22,
+                "MATK": 22
+            },
+            {
+                "ATK": 23,
+                "MATK": 23
+            },
+            {
+                "ATK": 24,
+                "MATK": 24
+            }
+        ]
+    }
+]
