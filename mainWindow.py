@@ -19,6 +19,7 @@ from Mapler import Mapler
 from skillWindow import skillController
 from links import linkSkillController
 from hypers import hyperController
+from legion import legionController
 
 class mainWindow(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -80,6 +81,8 @@ class mainWindow(QtWidgets.QWidget):
 
         self.legionTab = QtWidgets.QWidget()
         self.legionTab.setObjectName("legionTab")
+        self.legion = legionController(self.legionTab)
+        self.legion.setGeometry(QtCore.QRect(5, 5, 621, 380))
         self.tabWidget.addTab(self.legionTab, "Legion")
 
         self.statsCntrl = statsController(self)
