@@ -23,7 +23,16 @@ from hypers import hyperController
 class mainWindow(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self._db = None
         self.setupUi()
+    
+    @property
+    def db(self):
+        return self._db
+
+    @db.setter
+    def db(self, value):
+        self._db = value
 
     def setupUi(self):
         self.resize(960, 410)
@@ -191,4 +200,6 @@ class mainWindow(QtWidgets.QWidget):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.legionTab), _translate("Form", "Legion"))
 
     def save(self):
-        print("yo yo i'm saving")
+        print("i'm saving")
+        self.db.updateLinks(self.links.getJsonForDb())
+        self.db.updateSkills(self.skills.getJsonForDb())

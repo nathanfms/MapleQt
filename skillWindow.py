@@ -317,7 +317,32 @@ class skillController(QtWidgets.QWidget):
                     allFifthSpins[i].setProperty("value", skill.get("level"))
         self.updateTotal()
 
-    #This is awful and I hate everything about it.. thank you combat orders
+    def getJsonForDb(self):
+        passive = [
+            self.fifthSeSpin.value(), self.fifthHbSpin.value(),
+            self.fifthDoorSpin.value(), self.fifthBlinkSpin.value(),
+            self.fifthRopeSpin.value(), self.fifthSiSpin.value()
+        ]
+        allFifthSkills = self.activeFifth + self.passiveFifth
+        allFifthSpins = self.activeFifthSpins + self.passiveFifthSpins
+        fifthData = []
+        for i in range(0, len(allFifthSkills)):
+            name = allFifthSkills[i].json.get("name")
+            name = name.replace(" [Passive]", "")
+            name = name.replace(" [Active]", "")
+            level = allFifthSpins[i].value()
+            #saucy spaghetti
+            found = False
+            for skill in fifthData:
+                if(skill.get("name") == name):
+                    found = True
+                    break
+            if(not found):
+                fifthData.append({"name": name, "level": level})
+        return {"decentPassive": passive, "fifthSkills": fifthData}
+
+
+    #This is awful and I hate everything about it.. thank you combat orders 🙏
     def decentCombatOrders(self):
         self.dco = not self.dco
         self.applyCombatOrders()

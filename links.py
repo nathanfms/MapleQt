@@ -198,6 +198,30 @@ class linkSkillController(QtWidgets.QWidget):
         self.fairySpin.setProperty("value", beginnerLevels.get("fairy"))
         self.empSpin.setProperty("value", beginnerLevels.get("empress"))
 
+    def getJsonForDb(self):
+        passive = []
+        for value in self.passiveSpin:
+            passive.append(value.value())
+        active = []
+        for i in range(0, len(self.active)):
+            obj = {
+                "level": self.activeSpin[i].value(),
+                "enabled": self.activeBox[i].isChecked()
+            }
+            active.append(obj)
+        jett = self.getJett()
+        jett.update({"enabled": self.jettBox.isChecked()})
+        beginner = {
+            "fairy": self.fairySpin.value(),
+            "empress": self.empSpin.value()
+        }
+        return {
+            "passive": passive,
+            "active": active,
+            "jett": jett,
+            "beginner": beginner
+        }
+
 
     def updateTotal(self):
         self.total.clear()
@@ -213,15 +237,15 @@ class linkSkillController(QtWidgets.QWidget):
                 self.total = addDicts(self.total, self.active[i].getStats())
                 linksApplied += 1
         if(self.jettBox.isChecked()):
-            jett = {
-                "STR": self.strSpin.value(),
-                "DEX": self.dexSpin.value(),
-                "INT": self.intSpin.value(),
-                "LUK": self.lukSpin.value(),
-                "ATK": self.atkSpin.value(),
-                "MATK": self.matkSpin.value()
-            }
-            self.total = addDicts(self.total, jett)
+            # jett = {
+            #     "STR": self.strSpin.value(),
+            #     "DEX": self.dexSpin.value(),
+            #     "INT": self.intSpin.value(),
+            #     "LUK": self.lukSpin.value(),
+            #     "ATK": self.atkSpin.value(),
+            #     "MATK": self.matkSpin.value()
+            # }
+            self.total = addDicts(self.total, self.getJett())
             linksApplied += 1
         if(self.echoBox.isChecked()):
             self.total = addDicts(self.total, self.echo.getStats())
@@ -234,6 +258,16 @@ class linkSkillController(QtWidgets.QWidget):
         activeString = "Active Links: " + str(linksApplied)
         self.activeLinks.setText(activeString)
         self.notifyParent()
+
+    def getJett(self):
+        return {
+                "STR": self.strSpin.value(),
+                "DEX": self.dexSpin.value(),
+                "INT": self.intSpin.value(),
+                "LUK": self.lukSpin.value(),
+                "ATK": self.atkSpin.value(),
+                "MATK": self.matkSpin.value()
+            }
 
     def updatePassiveLinks(self):
         for i in range(0, len(self.passive)):

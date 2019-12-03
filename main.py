@@ -25,10 +25,15 @@ class MainWindow(QMainWindow):
         self.getCharacter()
         self.show()
 
+    @property
+    def db(self):
+        return self._db
+
     def getCharacter(self):
         if(path.exists('maplerId.json')):
             maplerId = json.load(open('maplerid.json')).get('id')
             self._currentChar = self._db.getMapler(maplerId)
+            self.center.db = self.db
             self.center.setupMapler(self._currentChar)
         else:
             self.createMapler = createMaplerWindow(onClick=self.createMaplerDone)
@@ -67,6 +72,7 @@ class MainWindow(QMainWindow):
         f.write(json.dumps(idDict))
         # print("Info: ", mapler.get('name'), mapler.get('level'), mapler.get('job'))
         self.createMapler.close()
+        self.center.db = self.db
         self.center.setupMapler(self._currentChar)
 
     def closeEvent(self, event):
