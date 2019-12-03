@@ -270,7 +270,7 @@ class skillController(QtWidgets.QWidget):
             elif(skill.get("fifth")): #is fifth, is passive
                 fifth = skillIcon(self)
                 fifth.setSkill(skill)
-                x = 20 + (40 * len(self.passiveFifth))
+                x = 20 + (70 * len(self.passiveFifth))
                 fifth.setGeometry(QtCore.QRect(x, 230, 32, 32))
                 self.passiveFifth.append(fifth)
                 spin = QtWidgets.QSpinBox(self)

@@ -17,6 +17,7 @@ from itemIcon import itemIcon
 from symbols import Symbols
 from Mapler import Mapler
 from skillWindow import skillController
+from links import linkSkillController
 
 class mainWindow(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -52,6 +53,8 @@ class mainWindow(QtWidgets.QWidget):
 
         self.hyperLinkTab = QtWidgets.QWidget()
         self.hyperLinkTab.setObjectName("hyperLinkTab")
+        self.links = linkSkillController(self.hyperLinkTab)
+        self.links.setGeometry(10, 10, 375, 215)
         self.tabWidget.addTab(self.hyperLinkTab, "Hypers + Skills [1/2]")
 
         # self.tabWidget.addTab() what is this?

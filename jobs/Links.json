@@ -1,7 +1,7 @@
 [
     {
         "name": "Solus [Ark]",
-        "img": "links/.png",
+        "img": "links/ark.png",
         "passive": false,
         "stats": [
             {
@@ -14,7 +14,7 @@
     },
     {
         "name": "Focus Spirit [Beast Tamer]",
-        "img": "links/.png",
+        "img": "links/bt.png",
         "passive": true,
         "stats": [
             {
@@ -39,7 +39,7 @@
     },
     {
         "name": "Pirate Blessing [Pirate]",
-        "img": "links/.png",
+        "img": "links/pirate.png",
         "passive": true,
         "stats": [
             {
@@ -76,7 +76,7 @@
     },
     {
         "name": "Adventurer's Curiosity [Bowman]",
-        "img": "links/.png",
+        "img": "links/bow.png",
         "passive": true,
         "stats": [
             {
@@ -101,7 +101,7 @@
     },
     {
         "name": "Empirical Knowledge [Magician]",
-        "img": "links/.png",
+        "img": "links/mage.png",
         "passive": false,
         "stats": [
             {
@@ -132,7 +132,7 @@
     },
     {
         "name": "Bravado [Ho Young]",
-        "img": "links/.png",
+        "img": "links/ho.png",
         "passive": true,
         "stats": [
             {
@@ -145,7 +145,7 @@
     },
     {
         "name": "Wild Rage [Demon Avenger]",
-        "img": "links/.png",
+        "img": "links/da.png",
         "passive": true,
         "stats": [
             {
@@ -161,7 +161,7 @@
     },
     {
         "name": "Fury Unleashed [Demon Slayer]",
-        "img": "links/.png",
+        "img": "links/ds.png",
         "passive": true,
         "stats": [
             {
@@ -177,7 +177,7 @@
     },
     {
         "name": "Keen Edge [Hayato]",
-        "img": "links/.png",
+        "img": "links/hayato.png",
         "passive": true,
         "stats": [
             {
@@ -194,7 +194,7 @@
     },
     {
         "name": "Tide of Battle [Illium]",
-        "img": "links/.png",
+        "img": "links/illium.png",
         "passive": false,
         "stats": [
             {
@@ -207,7 +207,7 @@
     },
     {
         "name": "Iron Will [Kaiser]",
-        "img": "links/.png",
+        "img": "links/kaiser.png",
         "passive": true,
         "stats": [
             {
@@ -223,7 +223,7 @@
     },
     {
         "name": "Elementalism [Kanna]",
-        "img": "links/.png",
+        "img": "links/kanna.png",
         "passive": true,
         "stats": [
             {
@@ -236,7 +236,7 @@
     },
     {
         "name": "Judgement [Kinesis]",
-        "img": "links/.png",
+        "img": "links/kinesis.png",
         "passive": true,
         "stats": [
             {
@@ -249,7 +249,7 @@
     },
     {
         "name": "Light Wash [Luminous]",
-        "img": "links/.png",
+        "img": "links/lumi.png",
         "passive": true,
         "stats": [
             {
@@ -265,7 +265,7 @@
     },
     {
         "name": "Phantom Instinct [Phantom]",
-        "img": "links/.png",
+        "img": "links/phant.png",
         "passive": true,
         "stats": [
             {
@@ -281,7 +281,7 @@
     },
     {
         "name": "Hybrid Logic [Xenon]",
-        "img": "links/.png",
+        "img": "links/xenon.png",
         "passive": true,
         "stats": [
             {
@@ -294,7 +294,7 @@
     },
     {
         "name": "Rhinne's Blessing [Zero]",
-        "img": "links/.png",
+        "img": "links/zero.png",
         "passive": true,
         "stats": [
             {
@@ -316,7 +316,7 @@
     },
     {
         "name": "Cygnus Blessing [Cygnus]",
-        "img": "links/.png",
+        "img": "links/cygnus.png",
         "passive": true,
         "stats": [
             {
@@ -363,7 +363,7 @@
     },
     {
         "name": "Terms and Conditions [Angelic Buster]",
-        "img": "links/.png",
+        "img": "links/ab.png",
         "passive": false,
         "stats": [
             {
