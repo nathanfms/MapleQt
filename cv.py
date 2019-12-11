@@ -52,6 +52,9 @@ cv2.rectangle(img, findTop(file), findBottom(file), 255, 2)
 top = findTop(file)
 bot = findBottom(file)
 
+print(top)
+print(bot)
+
 x = top[0]
 y = top[1]
 
