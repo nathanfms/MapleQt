@@ -344,10 +344,10 @@ class legionController(QtWidgets.QWidget):
         self.total.update({"MATK": self.matkSpinbox.value()})
         self.total.update({"HP": self.hpSpinbox.value() * 250})
         self.total.update({"MP": self.mpSpinbox.value() * 250})
-        self.total.update({"CRITRATEp": float(self.critrateSpinbox.value())})
-        self.total.update({"CRITDMGp": self.critdmgSpinbox.value() * 0.5})
+        self.total.update({"CRITRATEp": float(self.critrateSpinbox.value() * 0.01)})
+        self.total.update({"CRITDMGp": self.critdmgSpinbox.value() * 0.005})
         self.total.update({"IGNORE": float(self.ignoreSpinbox.value())})
-        self.total.update({"BOSSp": float(self.bossSpinbox.value())})
+        self.total.update({"BOSSp": float(self.bossSpinbox.value() * 0.01)})
         charValues = {}
         for key in self.characters:
             arr = self.characters.get(key)

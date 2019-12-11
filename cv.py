@@ -3,8 +3,8 @@ import numpy as np
 from matplotlib import pyplot
 import pytesseract
 
-def findBottom():
-    img = cv2.imread('test2.png', 0)
+def findBottom(file):
+    img = cv2.imread(file, 0)
     img2 = img.copy()
     template = cv2.imread('assets/bot.png', 0)
     w, h = template.shape[::-1]
@@ -16,8 +16,8 @@ def findBottom():
     bottom_right = (top_left[0] + w, top_left[1] + h)
     return bottom_right
 
-def findTop():
-    img = cv2.imread('test2.png', 0)
+def findTop(file):
+    img = cv2.imread(file, 0)
     img2 = img.copy()
     template = cv2.imread('assets/top.png', 0)
     w, h = template.shape[::-1]
@@ -43,38 +43,14 @@ def countStars():
         cv2.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0,0,255), 2)
     cv2.imwrite('res.png',img_rgb)
 
-img = cv2.imread('test2.png', 0)
-# img2 = img.copy()
-# templateTop = cv2.imread('assets/top.png', 0)
-# templateBot = cv2.imread('assets/bot.png', 0)
-# w, h = templateTop.shape[::-1]
+file = 'test-images/test2.png'
 
-# img = img2.copy()
-# method = cv2.TM_CCOEFF
+img = cv2.imread(file, 0)
 
-# res = cv2.matchTemplate(img, templateTop, method)
-# min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-# top_left = max_loc
-# bottom_right = (top_left[0] + w, top_left[1] + h + 200)
+cv2.rectangle(img, findTop(file), findBottom(file), 255, 2)
 
-cv2.rectangle(img, findTop(), findBottom(), 255, 2)
-
-# print(top_left)
-# print(bottom_right)
-
-# pyplot.subplot(121),pyplot.imshow(res, cmap='gray')
-# pyplot.title('Matching Result'), pyplot.xticks([]), pyplot.yticks([])
-# pyplot.subplot(122),pyplot.imshow(img,cmap='gray')
-# pyplot.title('Detected Point'),pyplot.xticks([]),pyplot.yticks([])
-# pyplot.suptitle(cv2.TM_CCOEFF)
-
-# pyplot.show()
-
-print(findTop())
-print(findBottom())
-
-top = findTop()
-bot = findBottom()
+top = findTop(file)
+bot = findBottom(file)
 
 x = top[0]
 y = top[1]
@@ -84,9 +60,6 @@ h = bot[1] - top[1]
 
 cropped = img[y:y+h, x:x+w].copy()
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-print(pytesseract.image_to_string(cropped, lang="Arial"))
 
 cv2.imshow("cropped", cropped)
 cv2.waitKey(0)
