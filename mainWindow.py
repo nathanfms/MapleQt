@@ -20,6 +20,7 @@ from skillWindow import skillController
 from links import linkSkillController
 from hypers import hyperController
 from legion import legionController
+import gameReader
 
 class mainWindow(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -57,9 +58,17 @@ class mainWindow(QtWidgets.QWidget):
         self.symbCntrl.setGeometry(QtCore.QRect(20, 270, 233, 67))
         self.symbCntrl.setObjectName("symbols")
 
-        self.pushButton = QtWidgets.QPushButton(self.equipTab)
-        self.pushButton.setGeometry(QtCore.QRect(510, 10, 75, 23))
-        self.pushButton.setObjectName("pushButton")
+        self.readerButton = QtWidgets.QPushButton(self.equipTab)
+        self.readerButton.setGeometry(QtCore.QRect(510, 10, 100, 23))
+        self.readerButton.setObjectName("readerButton")
+        self.readerButton.setText("Read in Equips")
+        self.readerButton.clicked.connect(self.readGame)
+        self.stopButton = QtWidgets.QPushButton(self.equipTab)
+        self.stopButton.setGeometry(QtCore.QRect(510, 40, 100, 23))
+        self.stopButton.setText("Stop Reading")
+        self.stopButton.setEnabled(False)
+        self.stopButton.clicked.connect(self.stopReading)
+
         self.tabWidget.addTab(self.equipTab, "Equipment")
 
         self.hyperLinkTab = QtWidgets.QWidget()
@@ -96,6 +105,12 @@ class mainWindow(QtWidgets.QWidget):
         # self.retranslateUi(Form)
         self.tabWidget.setCurrentIndex(0)
         # QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def readGame(self):
+        self.stopButton.setEnabled(True)
+
+    def stopReading(self):
+        self.stopButton.setEnabled(False)
 
     @property
     def mapler(self):

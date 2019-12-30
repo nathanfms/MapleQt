@@ -4,7 +4,7 @@ import cv2
 import time
 import win32gui
 import win32con
-
+from Equip import Equip
 import io
 import os
 from google.cloud import vision
@@ -50,6 +50,33 @@ def findPdd(img):
     
     return (top_left, bottom_right, found)
 
+def updateEquipValues(text, eqp, statName, isPotential):
+    if isPotential:
+        if '%' in text:
+            val = text[text.find('+') + 1:text.find('%')]
+            val = float(int(val) * 0.01)
+        else:
+            val = int(text[text.find('+') + 1:])
+        curr = eqp.mpot.get(statName)
+        if type(curr) is list:
+            eqp.mpot.get(statName).append(val)
+        elif curr is None:
+            eqp.mpot.update({statName : val})
+        else:
+            arr = [curr, val]
+            eqp.mpot.update({statName : arr})
+    elif '(' in text:
+        #Has a base AND flame/star value
+        substring = text
+        if text.count('+') == 3:
+            substring = text[:text.rfind('+')]
+        eqp.base.update({statName : text[text.find('(') + 1:substring.rfind('+')]})
+    else:
+        val = text[text.find('+') + 1:]
+        if '%' in val:
+            val = val[:val.find('%')]
+        eqp.base.update({statName : int(val)})
+
 def parseEquip(ocrString):
     partition = ocrString.split('\n')
     idx = 0
@@ -58,7 +85,53 @@ def parseEquip(ocrString):
         name = partition[idx]
         idx += 1
     name = name.replace('•', '')
-    print(name)
+    # print(ocrString)
+
+    eqp = Equip()
+    eqp.name = name
+
+    isPotential = False
+    for word in partition[idx:]:
+        if 'Type' in word:
+            eqp.eqpType = word
+        elif 'Potential' in word:
+            isPotential = True
+        elif 'STR' in word and 'REQ' not in word and 'REO' not in word:
+            updateEquipValues(word, eqp, 'STR', isPotential)
+        elif 'DEX' in word and 'REQ' not in word and 'REO' not in word:
+            updateEquipValues(word, eqp, 'DEX', isPotential)
+        elif ('INT' in word or 'NT' in word or '\'NT' in word or 'lNT' in word) and 'REQ' not in word and 'REO' not in word:
+            updateEquipValues(word, eqp, 'INT', isPotential)
+        elif 'LUK' in word and 'REQ' not in word and 'REO' not in word:
+            updateEquipValues(word, eqp, 'LUK', isPotential)
+        elif 'Power' in word or 'ATT' in word and 'INCREASE' not in word and ',' not in word and '/' not in word and 'M.' not in word:
+            updateEquipValues(word, eqp, 'ATK', isPotential)
+        elif 'Magic Attack' in word:
+            updateEquipValues(word, eqp, 'MATK', isPotential)
+        elif 'HP' in word:
+            updateEquipValues(word, eqp, 'HP', isPotential)
+        elif 'MP' in word:
+            updateEquipValues(word, eqp, 'MP', isPotential)
+        elif 'Defense' in word:
+            updateEquipValues(word, eqp, 'DEF', isPotential)
+        elif 'Speed' in word and 'Attack' not in word:
+            updateEquipValues(word, eqp, 'SPEED', isPotential)
+        elif 'Jump' in word:
+            updateEquipValues(word, eqp, 'JUMP', isPotential)
+        elif 'Critical Rate' in word:
+            updateEquipValues(word, eqp, 'CRITRATE', isPotential)
+        elif 'Critical Damage' in word:
+            updateEquipValues(word, eqp, 'CRITDMG', isPotential)
+        elif 'Boss' in word:
+            updateEquipValues(word, eqp, 'BOSSDMG', isPotential)
+        elif 'Damage' in word and 'Boss' not in word:
+            updateEquipValues(word, eqp, 'DMG', isPotential)
+        elif 'Ignore' in word:
+            updateEquipValues(word, eqp, 'IGNORE', isPotential)
+        elif 'AI' in word or 'Al' in word or 'All' in word or 'AlI' in word or 'AIl' in word:
+            updateEquipValues(word, eqp, 'ALL', isPotential)
+    print(eqp.base)
+    print(eqp.mpot)
     # for word in partition[idx:]:
     #     if 'Type' in word:
     #         print(word)
@@ -84,6 +157,7 @@ def parseEquip(ocrString):
     #         print(word)
     #     elif 'AI' in word or 'Al' in word or 'All' in word or 'AlI' in word or 'AIl' in word:
     #         print(word)
+
 
 def screen_record():
     client = vision.ImageAnnotatorClient()

@@ -8,6 +8,13 @@ class Equip():
     def setup(self):
         if(self.json is not None):
             self.parseJson()
+        else:
+            self._base = {}
+            self._star = {}
+            self._flame = {}
+            self._mpot = {}
+            self._bpot = {}
+            self._soul = {}
         
     def parseJson(self):
         self._name = self.json.get("name")
