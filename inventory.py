@@ -178,6 +178,10 @@ class inventoryController(QtWidgets.QWidget):
                 return slot
         return empty
 
+    def removeItem(self, name):
+        child = self.findChild(itemIcon, name)
+        child.clearSlot()
+
 
     def childClicked(self, name):
         child = self.findChild(itemIcon, name)

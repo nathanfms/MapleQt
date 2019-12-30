@@ -8,8 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from item import itemInfo
-
-
+import inventory
 
 class itemIcon(QtWidgets.QWidget):
 
@@ -30,6 +29,8 @@ class itemIcon(QtWidgets.QWidget):
 
     #Tell my parent I was clicked on
     def notifyParent(self, event):
+        if(event.button() == 2 and type(self.parent) is inventory.inventoryController):
+            self.parent.removeItem(self.objectName())
         self.parent.childClicked(self.objectName())
 
     #Copy values from another itemIcon. Used for inventory -> equip and vice versa
