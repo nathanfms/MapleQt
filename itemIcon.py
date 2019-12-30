@@ -29,7 +29,9 @@ class itemIcon(QtWidgets.QWidget):
 
     #Tell my parent I was clicked on
     def notifyParent(self, event):
-        if(event.button() == 2 and type(self.parent) is inventory.inventoryController):
+        #Shift + double right click to remove item
+        if(QtWidgets.QApplication.keyboardModifiers() == QtCore.Qt.ShiftModifier and event.button() == 2 and type(self.parent) is inventory.inventoryController):
+            print(QtWidgets.QApplication.keyboardModifiers())
             self.parent.removeItem(self.objectName())
         self.parent.childClicked(self.objectName())
 

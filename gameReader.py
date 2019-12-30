@@ -59,36 +59,38 @@ def parseEquip(ocrString):
         idx += 1
     name = name.replace('•', '')
     print(name)
-    for word in partition[idx:]:
-        if 'Type' in word:
-            print(word)
-        elif 'LEV' in word:
-            print(word)
-        elif 'STR' in word and 'REQ' not in word and 'REO' not in word:
-            print(word)
-        elif 'DEX' in word and 'REQ' not in word and 'REO' not in word:
-            print(word)
-        elif ('INT' in word or 'NT' in word or '\'NT' in word or 'lNT' in word) and 'REQ' not in word and 'REO' not in word:
-            print(word)
-        elif 'LUK' in word and 'REQ' not in word and 'REO' not in word:
-            print(word)
-        elif 'Attack Power' in word:
-            print(word)
-        elif 'Magic' in word:
-            print(word)
-        elif 'Defense' in word:
-            print(word)
-        elif 'Speed' in word:
-            print(word)
-        elif 'Jump' in word:
-            print(word)
-        elif 'AI' in word or 'Al' in word or 'All' in word or 'AlI' in word or 'AIl' in word:
-            print(word)
+    # for word in partition[idx:]:
+    #     if 'Type' in word:
+    #         print(word)
+    #     elif 'LEV' in word:
+    #         print(word)
+    #     elif 'STR' in word and 'REQ' not in word and 'REO' not in word:
+    #         print(word)
+    #     elif 'DEX' in word and 'REQ' not in word and 'REO' not in word:
+    #         print(word)
+    #     elif ('INT' in word or 'NT' in word or '\'NT' in word or 'lNT' in word) and 'REQ' not in word and 'REO' not in word:
+    #         print(word)
+    #     elif 'LUK' in word and 'REQ' not in word and 'REO' not in word:
+    #         print(word)
+    #     elif 'Attack Power' in word:
+    #         print(word)
+    #     elif 'Magic' in word:
+    #         print(word)
+    #     elif 'Defense' in word:
+    #         print(word)
+    #     elif 'Speed' in word:
+    #         print(word)
+    #     elif 'Jump' in word:
+    #         print(word)
+    #     elif 'AI' in word or 'Al' in word or 'All' in word or 'AlI' in word or 'AIl' in word:
+    #         print(word)
 
 def screen_record():
     client = vision.ImageAnnotatorClient()
     i = 0
-    while(True):
+    lastCursorPos = win32gui.GetCursorInfo()[2]
+    while(i < 2):
+        cursorPos = win32gui.GetCursorInfo()[2]
         # printscreen = np.array(ImageGrab.grab(bbox=(0,40,800,640)))
         winder = win32gui.FindWindow(None, "Maplestory")
         win32gui.SetWindowPos(winder, win32con.HWND_NOTOPMOST, 0,0,0,0,win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)
@@ -100,8 +102,8 @@ def screen_record():
         # bot = findBottom(fullWindow)
 
         pdd = findPdd(fullWindow)
-        
-        if(pdd[2] == True):
+        if(pdd[2] == True and (lastCursorPos[0] + 20  < cursorPos[0] or cursorPos[0] < lastCursorPos[0] - 20 
+                            or lastCursorPos[1] + 20 < cursorPos[1] or cursorPos[1] < lastCursorPos[1] - 20)):
             pddCoords = (loc[0] + pdd[0][0], loc[1] + pdd[0][1], loc[0] + pdd[1][0], loc[1] + pdd[1][1])
             reducedSearchCoords = (pddCoords[0] - 20, loc[1], pddCoords[0] + 260, loc[3])
             reducedSearchImg = ImageGrab.grab(reducedSearchCoords)
@@ -134,7 +136,8 @@ def screen_record():
                 # for text in texts:
                     # print(text)
                 cv2.destroyAllWindows()
-                break
+                i += 1
+                lastCursorPos = cursorPos
             # cv2.imshow('window',cv2.cvtColor(reducedSearchWindow, cv2.COLOR_BGR2RGB))
         # pddImg = ImageGrab.grab(bbox=pddCoords)
         # pddWindow = np.array(pddImg)
