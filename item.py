@@ -79,9 +79,10 @@ def getStatSpecific(json, statArray):
     return newTotals
 
 class itemInfo(QtWidgets.QWidget):
-    def __init__(self, json=None, parent=None):
+    def __init__(self, eqp=None, parent=None):
         super().__init__(parent)
-        self.json = json
+        self.eqp = eqp
+        self.json = eqp.json
         self.jsonVals = countAttributes(self.json)
         self.setupUi()
         
@@ -92,7 +93,6 @@ class itemInfo(QtWidgets.QWidget):
             QtCore.Qt.FramelessWindowHint |
             QtCore.Qt.ToolTip
         )
-        
         statHeight = 22 * len(self.jsonVals) + 5
         self.setObjectName("Item")
         self.resize(294, 695)
@@ -117,7 +117,8 @@ class itemInfo(QtWidgets.QWidget):
         self.itemImg = QtWidgets.QLabel(self)
         self.itemImg.setGeometry(QtCore.QRect(10, 70, 80, 80))
         self.itemImg.setText("")
-        self.itemImg.setPixmap(QtGui.QPixmap("assets/dummy-item.png"))
+        img = 'assets/equips/' + self.eqp.id + '.png'
+        self.itemImg.setPixmap(QtGui.QPixmap(img))
         self.itemImg.setObjectName("itemImg")
 
         self.range = QtWidgets.QLabel(self)
@@ -460,7 +461,7 @@ class itemInfo(QtWidgets.QWidget):
                 item.setText(_translate("Form", text))
             self.bpotVals.setSortingEnabled(__sortingEnabled)
 
-        if(self.json.get("soul") is not None):
+        if(self.json.get("soul") is not None and any(self.json.get("soul"))):
             soul = formatPotLines(self.json["soul"])
             self.soulLabel.setText(_translate("Form", "SOUL"))
             __sortingEnabled = self.soulLine.isSortingEnabled()

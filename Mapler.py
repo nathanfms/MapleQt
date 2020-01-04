@@ -37,6 +37,7 @@ class Mapler(Equip):
             eqpJson = self.db.getEquip(val)
             e = Equip(json=eqpJson)
             e.recalcTotal()
+            e.id = val
             self.equips.update({key : e})
         #links
         #legion
@@ -46,6 +47,7 @@ class Mapler(Equip):
         for item in self._invIds:
             #(row, col) = id
             eqp = Equip(self.db.getEquip(item.get('id')))
+            eqp.id = item.get('id')
             self.inventory.update({ (item.get('row'), item.get('col')) : eqp })
 
     def addEquip(self, equip):

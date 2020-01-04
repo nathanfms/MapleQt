@@ -20,6 +20,7 @@ from skillWindow import skillController
 from links import linkSkillController
 from hypers import hyperController
 from legion import legionController
+import shutil
 import gameReader
 
 class mainWindow(QtWidgets.QWidget):
@@ -68,6 +69,9 @@ class mainWindow(QtWidgets.QWidget):
         self.stopButton.setText("Stop Reading")
         self.stopButton.setEnabled(False)
         self.stopButton.clicked.connect(self.stopReading)
+        self.readLabel = QtWidgets.QLabel(self.equipTab)
+        self.readLabel.setGeometry(QtCore.QRect(512, 55, 100, 40))
+        self.readLabel.setText("Read Equips: 0")
 
         self.tabWidget.addTab(self.equipTab, "Equipment")
 
@@ -108,9 +112,38 @@ class mainWindow(QtWidgets.QWidget):
 
     def readGame(self):
         self.stopButton.setEnabled(True)
+        gameReader.keepReading = True
+        
+        gameReader.screen_record(self.successfullyReadEquip)
+        # for e in equips:
+        #     print(e.name)
+
+    def successfullyReadEquip(self, equip):
+        print(equip.name)
+        slot = self.invCntrl.getFirstOpenSlot()
+
+        if(slot is not None and slot[0] is not None):
+            id = self.db.addEquip(equip.json)
+            moveFile = './assets/equips/' + str(id) + '.png'
+            shutil.copy('./temp-vision-files/itemIcon.png', moveFile)
+            info = {'row':slot[1], 'col':slot[2], 'id':str(id)}
+            self.db.addEquipToInventory(info) 
+
+            before = self.readLabel.text()
+            num = int(before[before.find(':') + 1:])
+            after = 'Read Equips: ' + str(num + 1)
+            self.readLabel.setText(after)
+
+
+
 
     def stopReading(self):
         self.stopButton.setEnabled(False)
+        gameReader.keepReading = False
+        # equips = gameReader.readEquips
+        # gameReader.readEquips.clear()
+        # for e in equips:
+        #     print(e.name)
 
     @property
     def mapler(self):
@@ -130,6 +163,7 @@ class mainWindow(QtWidgets.QWidget):
         self.symbCntrl.updateLevels(self.mapler.symbols)
 
         for key,val in self.mapler.inventory.items():
+            print('main: ', val.id)
             row = key[0]
             col = key[1]
             eqp = val
@@ -174,7 +208,10 @@ class mainWindow(QtWidgets.QWidget):
         self.statsCntrl.update(json=self.mapler.getTotal())
 
     #Equip in inventory -> Equipped
-    def swapEquip(self, item):
+    def swapEquip(self, item, rightClick=False):
+        if(rightClick):
+            self.deleteEquip(item)
+            return
         itemType = item.equip.eqpType
         if(itemType == 'PENDANT'):
             itemType = self.mapler.getOpenPendSlot()
@@ -192,23 +229,34 @@ class mainWindow(QtWidgets.QWidget):
             temp.importFromOther(equipSlot)
             equipSlot.importFromOther(item)
             item.clearSlot()
-            freeInvSlot = self.invCntrl.getFirstOpenSlot()
+            freeInvSlot = self.invCntrl.getFirstOpenSlot()[0]
             freeInvSlot.importFromOther(temp)
-            freeInvSlot.dummyPic()
+            img = 'assets/equips/' + temp.equip.id + '.png'
+            freeInvSlot.setPic(img)
+            # freeInvSlot.dummyPic()
         else:
             equipSlot.importFromOther(item)
             item.clearSlot()
-        equipSlot.dummyPic()
+        # equipSlot.dummyPic()
+        # print(equipSlot.equip.name)
+        img = 'assets/equips/' + equipSlot.equip.id + '.png'
+        equipSlot.setPic(img)
         self.statsCntrl.update(json=self.mapler.getTotal())
 
     def removeEquip(self, item):
-        freeInvSlot = self.invCntrl.getFirstOpenSlot()
+        print('called')
+        freeInvSlot = self.invCntrl.getFirstOpenSlot()[0]
         freeInvSlot.importFromOther(item)
-        freeInvSlot.dummyPic()
+        # freeInvSlot.dummyPic()
+        img = 'assets/equips/' + item.equip.id + '.png'
+        freeInvSlot.setPic(img)
         item.clearSlot()
         self.mapler.removeEquip(item.objectName())
         self.statsCntrl.update(json=self.mapler.getTotal())
         # self.mapler.removeEquip(item.name)
+
+    def deleteEquip(self, id):
+        self.db.removeEquip(id)
 
     def update(self):
         pass

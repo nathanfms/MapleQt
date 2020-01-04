@@ -129,7 +129,9 @@ class equipController(QtWidgets.QWidget):
         if(eqp == None):
             return
         eqpSlot = self.findChild(itemIcon, eqpType)
-        eqpSlot.dummyPic()
+        # eqpSlot.dummyPic()
+        img = 'assets/equips/' + eqp.id + '.png'
+        eqpSlot.setPic(img)
         eqpSlot.setEquip(eqp)
 
     def clicked(self):

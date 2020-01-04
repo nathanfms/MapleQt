@@ -2,6 +2,7 @@ venv/
 .vscode/
 test-images/
 qt-creator-files/
+assets/equips
 __pycache__/
 WzExtracting/
 DatabaseController.py

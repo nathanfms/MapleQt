@@ -169,17 +169,30 @@ class inventoryController(QtWidgets.QWidget):
         self.filledSlots.append(slotName)
         slot = self.findChild(itemIcon, slotName)
         slot.setEquip(equip)
-        slot.dummyPic()
+        print(equip.id)
+        img = 'assets/equips/' + equip.id + '.png'
+        slot.setPic(img)
+        # slot.dummyPic()
 
     def getFirstOpenSlot(self):
-        empty = None
+        row = 0
+        col = 0
         for slot in self.allSlots:
             if(slot.equip is None):
-                return slot
-        return empty
+                return (slot, row, col)
+            col += 1
+            if(col % 5 == 0):
+                col = 0
+                row += 1
+            if(row == 8):
+                return None
+        return None
 
     def removeItem(self, name):
         child = self.findChild(itemIcon, name)
+        # parent.removeEquip(child.equip.id)
+        # self.parent.deleteEquip(child.equip.id)
+        self.onClick(child.equip.id, rightClick=True)
         child.clearSlot()
 
 

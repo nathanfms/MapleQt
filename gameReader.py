@@ -7,8 +7,16 @@ import win32con
 from Equip import Equip
 import io
 import os
+from PyQt5 import QtCore
 from google.cloud import vision
 from google.cloud.vision import types
+
+#Not a fan of this globals
+keepReading = True
+readEquips = []
+
+starStats = ['STR', 'DEX', 'INT', 'LUK', 'ATK', 'MATK', 'HP', 'MP', 'DEF']
+flameStats = ['SPEED', 'JUMP', 'ALL', 'DMG', 'BOSSDMG']
 
 #Stars 1 - 15
 starValues = [2, 4, 6, 8, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40]
@@ -22,6 +30,8 @@ starsOver15 = [
     [94, 106, 118, 130], #21
     [103, 117, 131, 145] #22
 ]
+
+levelsOver15 = [130, 140, 150, 160, 200]
 
 def countStars():
     img = cv2.imread('./temp-vision-files/star.png')
@@ -90,33 +100,69 @@ def findPdd(img):
     return (top_left, bottom_right, found)
 
 def updateEquipValues(text, eqp, statName, isPotential):
+    # base = eqp.get('base')
+    # star = eqp.get('star')
+    # flame = {}
+    # mpot = {}
+    # bpot = {}
+    # soul = {}
     if isPotential:
         if '%' in text:
             val = text[text.find('+') + 1:text.find('%')]
             val = float(int(val) * 0.01)
         else:
             val = int(text[text.find('+') + 1:])
-        curr = eqp.mpot.get(statName)
+        # curr = eqp.mpot.get(statName)
+        curr = eqp.get('mpot').get(statName)
         if type(curr) is list:
-            eqp.mpot.get(statName).append(val)
+            # eqp.mpot.get(statName).append(val)
+            eqp.get('mpot').get(statName).append(val)
         elif curr is None:
-            eqp.mpot.update({statName : val})
+            # eqp.mpot.update({statName : val})
+            eqp.get('mpot').update({statName : val})
         else:
             arr = [curr, val]
-            eqp.mpot.update({statName : arr})
+            # eqp.mpot.update({statName : arr})
+            eqp.get('mpot').update({statName : arr})
     elif '(' in text:
-        #Has a base AND flame/star value
-        substring = text
-        if text.count('+') == 3:
-            substring = text[:text.rfind('+')]
+        info = text[text.find('('):]
+        if '%' in text:
+            leftmostValue = float(info[1:info.find('%')]) * 0.01
+            rightmostValue = float(info[info.rfind('+') + 1:info.rfind('%')]) * 0.01
+        else:
+            leftmostValue = int(info[1:info.find('+')])
+            rightmostValue = int(text[text.rfind('+') + 1:text.rfind(')')])
+        # if eqp.star.get('amount') == 0:
+        if eqp.get('star').get('amount') == 0:
+            # eqp.flame.update({statName : rightmostValue})
+            eqp.get('flame').update({statName : rightmostValue})
+        elif text.count('+') == 3:
             flame = text[text.find('('):]
-            eqp.flame.update({statName : flame[flame.find('+') + 1:flame.rfind('+')]})
-        eqp.base.update({statName : text[text.find('(') + 1:substring.rfind('+')]})
+            # eqp.flame.update({statName : flame[flame.find('+') + 1:flame.rfind('+')]})
+            num = int(flame[flame.find('+') + 1:flame.rfind('+')])
+            eqp.get('flame').update({statName : num})
+            # eqp.star.update({statName : rightmostValue})
+            eqp.get('star').update({statName : rightmostValue})
+        elif statName in starStats:
+            # eqp.star.update({statName : rightmostValue})
+            eqp.get('star').update({statName : rightmostValue})
+        else:
+            # eqp.flame.update({statName : rightmostValue})
+            eqp.get('flame').update({statName : rightmostValue})
+        # eqp.base.update({statName : leftmostValue})
+        eqp.get('base').update({statName : leftmostValue})
     else:
         val = text[text.find('+') + 1:]
         if '%' in val:
             val = val[:val.find('%')]
-        eqp.base.update({statName : int(val)})
+        # eqp.base.update({statName : int(val)})
+        eqp.get('base').update({statName: int(val)})
+    # eqp.update({'base':base})
+    # eqp.update({'star':star})
+    # eqp.update({'flame':flame})
+    # eqp.update({'mpot':mpot})
+    # eqp.update({'bpot':bpot})
+    # eqp.update({'soul':soul})
 
 def parseEquip(ocrString):
     partition = ocrString.split('\n')
@@ -128,13 +174,23 @@ def parseEquip(ocrString):
     name = name.replace('•', '')
     # print(ocrString)
 
-    eqp = Equip()
-    eqp.name = name
+    eqp = {
+        'name': name,
+        'base': {},
+        'star': {'amount' : countStars()},
+        'flame': {},
+        'mpot': {},
+        'bpot': {},
+        'soul': {}
+    }
+    # eqp.star.update({"amount": countStars()})
 
     isPotential = False
     for word in partition[idx:]:
         if 'Type' in word:
-            eqp.eqpType = word
+            word = word[word.find(':') + 1:]
+            eqp.update({'type' : word})
+            # eqp.eqpType = word
         elif 'Potential' in word:
             isPotential = True
         elif 'STR' in word and 'REQ' not in word and 'REO' not in word:
@@ -171,9 +227,11 @@ def parseEquip(ocrString):
             updateEquipValues(word, eqp, 'IGNORE', isPotential)
         elif ('AI' in word or 'Al' in word or 'All' in word or 'AlI' in word or 'AIl' in word) and 'gain' not in word:
             updateEquipValues(word, eqp, 'ALL', isPotential)
-    print(eqp.base)
-    print(eqp.flame)
-    print(eqp.mpot)
+    # print(eqp.base)
+    # print(eqp.flame)
+    # print(eqp.star)
+    # print(eqp.mpot)
+    return Equip(json=eqp)
     # for word in partition[idx:]:
     #     if 'Type' in word:
     #         print(word)
@@ -201,11 +259,13 @@ def parseEquip(ocrString):
     #         print(word)
 
 
-def screen_record():
+def screen_record(callback):
     client = vision.ImageAnnotatorClient()
     i = 0
     lastCursorPos = win32gui.GetCursorInfo()[2]
-    while(i < 1):
+    equips = []
+    while(keepReading):
+        QtCore.QCoreApplication.processEvents()
         cursorPos = win32gui.GetCursorInfo()[2]
         # printscreen = np.array(ImageGrab.grab(bbox=(0,40,800,640)))
         winder = win32gui.FindWindow(None, "Maplestory")
@@ -256,12 +316,13 @@ def screen_record():
                 response = client.text_detection(image=image)
                 texts = response.text_annotations
                 # print(texts[0].description)
-                parseEquip(texts[0].description)
+                equip = parseEquip(texts[0].description)
                 # for text in texts:
                     # print(text)
                 cv2.destroyAllWindows()
                 i += 1
                 lastCursorPos = cursorPos
+                callback(equip)
             # cv2.imshow('window',cv2.cvtColor(reducedSearchWindow, cv2.COLOR_BGR2RGB))
         # pddImg = ImageGrab.grab(bbox=pddCoords)
         # pddWindow = np.array(pddImg)
@@ -274,24 +335,9 @@ def screen_record():
         # if(equipImg.width == 261):
         #     cv2.imshow('window',cv2.cvtColor(equipWindow, cv2.COLOR_BGR2RGB))
             
-        if cv2.waitKey(25) & 0xFF == ord('q'):
-            cv2.destroyAllWindows()
-            break
+        # if cv2.waitKey(25) & 0xFF == ord('q'):
+        #     cv2.destroyAllWindows()
+        #     break
 
         # print(i, pdd[2])
         # i += 1
-
-
-# winder = win32gui.FindWindow(None, "MapleStory")
-
-# #x, y, x+w, y+h
-# loc = win32gui.GetWindowPlacement(winder)[-1]
-# print(loc)
-
-# image = np.array(ImageGrab.grab(loc))
-# cv2.imshow('window',cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-# cv2.waitKey(0)
-
-screen_record()
-
-yellow = [(0, 180, 250), (0, 210, 255)]

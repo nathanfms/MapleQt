@@ -3,6 +3,7 @@ import json
 class Equip():
     def __init__(self, json=None):
         self._json = json
+        self._id = None
         self.setup()
 
     def setup(self):
@@ -15,6 +16,7 @@ class Equip():
             self._mpot = {}
             self._bpot = {}
             self._soul = {}
+            self._total = {}
         
     def parseJson(self):
         self._name = self.json.get("name")
@@ -76,10 +78,10 @@ class Equip():
             val = addingFrom.get(key)
             if(type(val) is list):
                 val = sum(val)
-            if(key == "IGNORE"):
-                if(self.total.get("IGNORE") is None):
-                    self.total.update( {"IGNORE" : []} )
-                self.total.get("IGNORE").append(val)
+            # if(key == "IGNORE"):
+            #     if(self.total.get("IGNORE") is None):
+            #         self.total.update( {"IGNORE" : []} )
+            #     self.total.get("IGNORE").append(val)
             elif(val > 0 and val < 1): #percentage
                 curr = self.total.get(key + 'p')
                 keyp = key + 'p'
@@ -104,6 +106,14 @@ class Equip():
     @property
     def total(self):
         return self._total
+
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, value):
+        self._id = str(value)
 
     @property
     def name(self):

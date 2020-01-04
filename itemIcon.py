@@ -31,7 +31,7 @@ class itemIcon(QtWidgets.QWidget):
     def notifyParent(self, event):
         #Shift + double right click to remove item
         if(QtWidgets.QApplication.keyboardModifiers() == QtCore.Qt.ShiftModifier and event.button() == 2 and type(self.parent) is inventory.inventoryController):
-            print(QtWidgets.QApplication.keyboardModifiers())
+            # print(QtWidgets.QApplication.keyboardModifiers())
             self.parent.removeItem(self.objectName())
         self.parent.childClicked(self.objectName())
 
@@ -53,7 +53,7 @@ class itemIcon(QtWidgets.QWidget):
 
     def setJson(self, json):
         self.json = json
-        self.toolTip = itemInfo(json=self.json, parent=self)
+        self.toolTip = itemInfo(eqp=self.equip, parent=self)
 
     def clearSlot(self):
         self.json = None
@@ -71,6 +71,7 @@ class itemIcon(QtWidgets.QWidget):
             self.setText(self.text)
 
     def setPic(self, location):
+        self.label.setScaledContents(True)
         self.label.setPixmap(QtGui.QPixmap(location))
 
     def enterEvent(self, event):
