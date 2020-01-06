@@ -124,9 +124,17 @@ class mainWindow(QtWidgets.QWidget):
 
         if(slot is not None and slot[0] is not None):
             id = self.db.addEquip(equip.json)
+            equip.id = id
             moveFile = './assets/equips/' + str(id) + '.png'
             shutil.copy('./temp-vision-files/itemIcon.png', moveFile)
             info = {'row':slot[1], 'col':slot[2], 'id':str(id)}
+            
+
+            # row = key[0]
+            # col = key[1]
+            # eqp = val
+            # self.invCntrl.addEquip(row, col, eqp)
+            self.invCntrl.addEquip(slot[1], slot[2], equip)
             self.db.addEquipToInventory(info) 
 
             before = self.readLabel.text()

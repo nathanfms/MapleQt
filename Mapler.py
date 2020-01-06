@@ -61,6 +61,8 @@ class Mapler(Equip):
             return itemType
 
     def removeEquip(self, equipType):
+        if(equipType[-1].isdigit()):
+            equipType = equipType[:-1]
         self.equips.pop(equipType)
 
     def getEquipJsonForDb(self):

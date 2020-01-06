@@ -206,7 +206,7 @@ class itemInfo(QtWidgets.QWidget):
         self.starLabel.setObjectName("starLabel")
 
         mpotHeight = 0
-        if(self.json.get("mpot") is not None):
+        if(bool(self.json.get("mpot"))):
             self.mpot = formatPotLines(self.json["mpot"])
             mpotHeight = 22 * len(self.mpot[0]) + 21 #16 + 5
             self.mpotLabel = QtWidgets.QLabel(self)
@@ -240,7 +240,7 @@ class itemInfo(QtWidgets.QWidget):
             # self.mpotVals.addItem(item)
 
         bpotHeight = 0
-        if(self.json.get("bpot") is not None):
+        if(bool(self.json.get("bpot"))):
             self.bpot = formatPotLines(self.json["bpot"])
             bpotHeight = 22 * len(self.bpot[0]) + 21
             self.bpotLabel = QtWidgets.QLabel(self)
@@ -273,7 +273,7 @@ class itemInfo(QtWidgets.QWidget):
             # self.bpotVals.addItem(item)
 
         soulHeight = 0
-        if(self.json.get("soul") is not None):
+        if(bool(self.json.get("soul"))):
             soulHeight = 32
             self.soulLabel = QtWidgets.QLabel(self)
             self.soulLabel.setGeometry(QtCore.QRect(7, statHeight + mpotHeight + bpotHeight + 170, 31, 16))
@@ -377,7 +377,7 @@ class itemInfo(QtWidgets.QWidget):
         __sortingEnabled = self.baseList.isSortingEnabled()
         self.baseList.setSortingEnabled(False)
 
-        if(self.json.get("base") is not None):
+        if(bool(self.json.get('base'))):
             baseVals = getStatSpecific(self.json["base"], jsonVals)
             for i in range(0, len(baseVals)):
                 item = self.baseList.item(i)
@@ -392,7 +392,7 @@ class itemInfo(QtWidgets.QWidget):
         __sortingEnabled = self.flameList.isSortingEnabled()
         self.flameList.setSortingEnabled(False)
 
-        if(self.json.get("flame") is not None):
+        if(bool(self.json.get('flame'))):
             flameVals = getStatSpecific(self.json["flame"], jsonVals)
             for i in range(0, len(flameVals)):
                 item = self.flameList.item(i)
@@ -407,7 +407,7 @@ class itemInfo(QtWidgets.QWidget):
         __sortingEnabled = self.starList.isSortingEnabled()
         self.starList.setSortingEnabled(False)
 
-        if(self.json.get("star") is not None):
+        if(bool(self.json.get('star'))):
             starVals = getStatSpecific(self.json["star"], jsonVals)
             for i in range(0, len(starVals)):
                 item = self.starList.item(i)
@@ -423,7 +423,7 @@ class itemInfo(QtWidgets.QWidget):
         self.flameLabel.setText(_translate("Form", "FLAME"))
         self.starLabel.setText(_translate("Form", "STAR"))
 
-        if(self.json.get("mpot") is not None):
+        if(bool(self.json.get("mpot"))):
             __sortingEnabled = self.mpotLines.isSortingEnabled()
             self.mpotLines.setSortingEnabled(False)
 
@@ -436,14 +436,15 @@ class itemInfo(QtWidgets.QWidget):
             self.mpotVals.setSortingEnabled(False)
 
             for i in range(0, len(self.mpot[1])):
-                text = "+" + self.mpot[1][i]
+                text = "+" + str(self.mpot[1][i])
                 item = self.mpotVals.item(i)
                 item.setText(_translate("Form", text))
 
             self.mpotVals.setSortingEnabled(__sortingEnabled)
             self.mpotLabel.setText(_translate("Form", "MAIN POTENTIAL"))
 
-        if(self.json.get("bpot") is not None):
+        
+        if(bool(self.json.get("bpot"))):
             self.bpotLabel.setText(_translate("Form", "BONUS  POTENTIAL"))
             __sortingEnabled = self.bpotLines.isSortingEnabled()
             self.bpotLines.setSortingEnabled(False)
@@ -462,6 +463,8 @@ class itemInfo(QtWidgets.QWidget):
             self.bpotVals.setSortingEnabled(__sortingEnabled)
 
         if(self.json.get("soul") is not None and any(self.json.get("soul"))):
+            self.soulLine.setVisible(True)
+            self.soulVal.setVisible(True)
             soul = formatPotLines(self.json["soul"])
             self.soulLabel.setText(_translate("Form", "SOUL"))
             __sortingEnabled = self.soulLine.isSortingEnabled()
