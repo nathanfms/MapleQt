@@ -60,7 +60,7 @@ class equipController(QtWidgets.QWidget):
         self.eye.setObjectName("eye")
         self.face = itemIcon(self)
         self.face.setGeometry(QtCore.QRect(150, 50, 37, 37))
-        self.face.setObjectName("face")
+        self.face.setObjectName("face accessory")
         self.bot = itemIcon(self)
         self.bot.setGeometry(QtCore.QRect(150, 170, 37, 37))
         self.bot.setObjectName("bot")

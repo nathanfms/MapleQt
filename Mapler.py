@@ -63,6 +63,13 @@ class Mapler(Equip):
     def removeEquip(self, equipType):
         self.equips.pop(equipType)
 
+    def getEquipJsonForDb(self):
+        curr = {}
+        for key in self.equips:
+            curr.update({key : self.equips.get(key).id})
+        return curr
+
+
     """
     Changing 1 item should not have to recalculate EVERYTHING!
     """

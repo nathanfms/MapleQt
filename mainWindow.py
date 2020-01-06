@@ -223,7 +223,7 @@ class mainWindow(QtWidgets.QWidget):
             itemType = self.mapler.getOpenPetSlot()
         oldEquipType = self.mapler.addEquip(item.equip)
         equipSlot = self.equipCntrl.findChild(itemIcon, itemType.lower())
-
+        print(itemType.lower())
         if(oldEquipType is not None):
             temp = itemIcon(self.invCntrl)
             temp.importFromOther(equipSlot)
@@ -279,3 +279,5 @@ class mainWindow(QtWidgets.QWidget):
         self.db.updateSkills(self.skills.getJsonForDb())
         self.db.updateHypers(self.hypers.getJsonForDb())
         self.db.updateLegion(self.legion.getJsonForDb())
+        self.db.updateInventory(self.invCntrl.getJsonForDb())
+        self.db.updateEquips(self.mapler.getEquipJsonForDb())

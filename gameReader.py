@@ -188,7 +188,7 @@ def parseEquip(ocrString):
     isPotential = False
     for word in partition[idx:]:
         if 'Type' in word:
-            word = word[word.find(':') + 1:]
+            word = word[word.find(':') + 2:]
             eqp.update({'type' : word})
             # eqp.eqpType = word
         elif 'Potential' in word:

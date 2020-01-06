@@ -16,7 +16,6 @@ class inventoryController(QtWidgets.QWidget):
     def __init__(self, parent=None, onClick=None):
         super().__init__(parent)
         self.onClick = onClick
-        self.filledSlots = []
         self.setupUi()
 
     def setupUi(self):
@@ -166,7 +165,6 @@ class inventoryController(QtWidgets.QWidget):
 
     def addEquip(self, row, col, equip):
         slotName = 'inv' + str(row + 1) + '_' + str(col + 1)
-        self.filledSlots.append(slotName)
         slot = self.findChild(itemIcon, slotName)
         slot.setEquip(equip)
         print(equip.id)
@@ -194,6 +192,23 @@ class inventoryController(QtWidgets.QWidget):
         # self.parent.deleteEquip(child.equip.id)
         self.onClick(child.equip.id, rightClick=True)
         child.clearSlot()
+
+    def getJsonForDb(self):
+        curr = []
+        row = 0
+        col = 0
+        for slot in self.allSlots:
+            if(slot.equip is not None):
+                curr.append({
+                    'row': row,
+                    'col': col,
+                    'id': slot.equip.id
+                })
+            col += 1
+            if(col % 5 == 0):
+                col = 0
+                row += 1
+        return curr
 
 
     def childClicked(self, name):
